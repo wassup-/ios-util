@@ -1,0 +1,14 @@
+PODS:
+  - ios-util (0.1.0)
+
+DEPENDENCIES:
+  - ios-util (from `../`)
+
+EXTERNAL SOURCES:
+  ios-util:
+    :path: ../
+
+SPEC CHECKSUMS:
+  ios-util: 7b6323cdb4188404013f306f0bab64b07ffb8da4
+
+COCOAPODS: 0.38.2

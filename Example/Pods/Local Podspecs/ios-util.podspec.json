@@ -1,0 +1,25 @@
+{
+  "name": "ios-util",
+  "version": "0.1.0",
+  "summary": "A short description of ios-util.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/ios-util",
+  "license": "MIT",
+  "authors": {
+    "Tom Knapen": "tom@failproof.be"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/ios-util.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "ios-util": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

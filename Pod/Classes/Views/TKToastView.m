@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 Tom Knapen. All rights reserved.
 //
 
+/**
+ * http://stackoverflow.com/a/20904416/840382 
+ */
+
 #import "TKToastView.h"
 
 @interface TKToastView ()

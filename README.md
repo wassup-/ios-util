@@ -22,7 +22,7 @@ pod "ios-util"
 
 ## Author
 
-Tom Knapen, tom@failproof.be
+Tom Knapen, tom@knapen.io
 
 ## License
 

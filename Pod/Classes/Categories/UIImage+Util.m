@@ -10,6 +10,9 @@
 
 @implementation UIImage (Util)
 
+/**
+ * http://stackoverflow.com/a/10602363/840382
+ */
 -(instancetype)dw_removeOrientation {	
 	CGImageRef        imgRef    = self.CGImage;
 	CGFloat           width     = CGImageGetWidth(imgRef);

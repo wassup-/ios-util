@@ -160,7 +160,8 @@ CGRect CGMakeRect(CGPoint origin, CGSize size) {
 	{ // LEFT
 		const CGSize TitleLabelSize = CGSizeMake(titleLabelMaxWidth, titleLabelMaxHeight);
 
-		CGPoint TitleLabelOrigin = CGPointMake(floor((self.bounds.size.width / 2.) + (self.bounds.size.width / 2. - TitleLabelSize.width) / 2.), floor(self.bounds.size.height - TitleLabelSize.height) / 2.);
+		CGPoint TitleLabelOrigin = CGPointMake(floor((self.bounds.size.width / 2.) - TitleLabelSize.width) / 2.,
+											   floor(self.bounds.size.height - TitleLabelSize.height) / 2.);
 		
 		CGRect TitleLabelFrame = CGMakeRect(TitleLabelOrigin, TitleLabelSize);
 		self.leftTitleLabel.frame = TitleLabelFrame;
@@ -170,7 +171,8 @@ CGRect CGMakeRect(CGPoint origin, CGSize size) {
 	{ // RIGHT
 		const CGSize TitleLabelSize = CGSizeMake(titleLabelMaxWidth, titleLabelMaxHeight);
 		
-		CGPoint TitleLabelOrigin = CGPointMake(floor((self.bounds.size.width / 2.) - TitleLabelSize.width) / 2., floor(self.bounds.size.height - TitleLabelSize.height) / 2.);
+		CGPoint TitleLabelOrigin = CGPointMake(floor((self.bounds.size.width / 2.) + (self.bounds.size.width / 2. - TitleLabelSize.width) / 2.),
+											   floor(self.bounds.size.height - TitleLabelSize.height) / 2.);
 		
 		CGRect TitleLabelFrame = CGMakeRect(TitleLabelOrigin, TitleLabelSize);
 		self.rightTitleLabel.frame = TitleLabelFrame;

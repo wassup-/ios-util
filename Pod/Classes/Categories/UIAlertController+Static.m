@@ -11,7 +11,7 @@
 @implementation UIAlertController (Static)
 
 +(instancetype)dw_alertControllerWithTitle:(NSString *)title message:(NSString *)message preferredStyle:(UIAlertControllerStyle)preferredStyle andActions:(NSArray *)actions {
-	UIAlertController *controller = [self alertControllerWithTitle:title message:message preferredStyle:preferredStyle];
+	UIAlertController *const controller = [self alertControllerWithTitle:title message:message preferredStyle:preferredStyle];
 	for(UIAlertAction *action in actions) {
 		[controller addAction:action];
 	}

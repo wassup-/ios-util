@@ -6,7 +6,7 @@
   "homepage": "https://github.com/<GITHUB_USERNAME>/ios-util",
   "license": "MIT",
   "authors": {
-    "Tom Knapen": "tom@failproof.be"
+    "Tom Knapen": "tom@knapen.io"
   },
   "source": {
     "git": "https://github.com/<GITHUB_USERNAME>/ios-util.git",

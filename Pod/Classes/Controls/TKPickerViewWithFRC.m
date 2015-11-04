@@ -8,6 +8,13 @@
 
 #import "TKPickerViewWithFRC.h"
 
+#ifndef THIS_FILE
+#define THIS_FILE TKPickerViewWithFRC
+#endif
+#ifndef THIS_METHOD
+#define THIS_METHOD NSStringFromSelector(_cmd)
+#endif
+
 @interface TKPickerViewWithFRC () <UIPickerViewDelegate, UIPickerViewDataSource, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -106,7 +113,6 @@
 	forChangeType:(NSFetchedResultsChangeType)type
 {
 	[self.modifiedSections addObject:@(indexPath.section)];
-	[self.modifiedSections addObject:@(newIndexPath.section)];
 }
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller {

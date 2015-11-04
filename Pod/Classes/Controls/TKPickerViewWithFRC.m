@@ -119,8 +119,4 @@
 	[self performBatchUpdates];
 }
 
--(NSString *)controller:(NSFetchedResultsController *)controller sectionIndexTitleForSectionName:(NSString *)sectionName {
-	
-}
-
 @end

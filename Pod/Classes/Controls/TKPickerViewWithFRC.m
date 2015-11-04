@@ -54,7 +54,7 @@
 -(void)reloadData {
 	NSError *error = nil;
 	if(![self.fetchedResultsController performFetch:&error]) {
-		DDLogError(@"[%@ %@] %@", THIS_FILE, THIS_METHOD, error);
+		NSLog(@"[%@ %@] %@", THIS_FILE, THIS_METHOD, error);
 	} else {
 		[self reloadAllComponents];
 	}
@@ -69,7 +69,7 @@
 
 #pragma mark - Properties
 
--(void)setApwDelegate:(id<APWPickerViewWithFRCProtocol>)apwDelegate {
+-(void)setApwDelegate:(id<TKPickerViewWithFRCProtocol>)apwDelegate {
 	_apwDelegate = apwDelegate;
 	[self reloadData];
 	self.dataSource = self;

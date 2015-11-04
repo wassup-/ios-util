@@ -9,7 +9,7 @@
 #import "TKPickerViewWithFRC.h"
 
 #ifndef THIS_FILE
-#define THIS_FILE TKPickerViewWithFRC
+#define THIS_FILE @"TKPickerViewWithFRC"
 #endif
 #ifndef THIS_METHOD
 #define THIS_METHOD NSStringFromSelector(_cmd)
@@ -112,7 +112,7 @@
 		  atIndex:(NSUInteger)sectionIndex
 	forChangeType:(NSFetchedResultsChangeType)type
 {
-	[self.modifiedSections addObject:@(indexPath.section)];
+	[self.modifiedSections addObject:@(sectionIndex)];
 }
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller {

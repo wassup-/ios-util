@@ -13,6 +13,8 @@
 		93864C9227104722A4FC8CA6CB63DEAA /* Pods-ios-util_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057C7DCC0313FB9CE327F4C1DF3EBE3 /* Pods-ios-util_Tests-dummy.m */; };
 		9CFF145A44D19BBA61477A27441C56BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B9FFC363C77A5BF0308D5CD36A9586 /* Foundation.framework */; };
 		E175C9D82DBFD13265CE1326E83700BC /* ios-util-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B9DCFA8A452E1C4F7122F90BAB0C646 /* ios-util-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E752CE031BEA626C0080F50B /* TKPickerViewWithFRC.h in Headers */ = {isa = PBXBuildFile; fileRef = E752CE011BEA626C0080F50B /* TKPickerViewWithFRC.h */; };
+		E752CE041BEA626C0080F50B /* TKPickerViewWithFRC.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CE021BEA626C0080F50B /* TKPickerViewWithFRC.m */; };
 		E77670A91BBD874B00B196AA /* MultiStateButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E77670A71BBD874B00B196AA /* MultiStateButton.h */; };
 		E77670AA1BBD874B00B196AA /* MultiStateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E77670A81BBD874B00B196AA /* MultiStateButton.m */; };
 		E77AEF651BBA97FE0036A736 /* Categories in Resources */ = {isa = PBXBuildFile; fileRef = E77AEF611BBA97FE0036A736 /* Categories */; };
@@ -62,6 +64,8 @@
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C79E6AF8E2793936D8A200A30FB3C619 /* Pods-ios-util_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ios-util_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D098FABB6A5A8F57368EF01FA0125970 /* Pods-ios-util_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ios-util_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		E752CE011BEA626C0080F50B /* TKPickerViewWithFRC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKPickerViewWithFRC.h; sourceTree = "<group>"; };
+		E752CE021BEA626C0080F50B /* TKPickerViewWithFRC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKPickerViewWithFRC.m; sourceTree = "<group>"; };
 		E77670A71BBD874B00B196AA /* MultiStateButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiStateButton.h; sourceTree = "<group>"; };
 		E77670A81BBD874B00B196AA /* MultiStateButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiStateButton.m; sourceTree = "<group>"; };
 		E77AEF611BBA97FE0036A736 /* Categories */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Categories; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 		E77670A61BBD870800B196AA /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				E752CE011BEA626C0080F50B /* TKPickerViewWithFRC.h */,
+				E752CE021BEA626C0080F50B /* TKPickerViewWithFRC.m */,
 				E7A7E3261BE0D364002004B3 /* TKSwitch.h */,
 				E7A7E3271BE0D364002004B3 /* TKSwitch.m */,
 				E77670A71BBD874B00B196AA /* MultiStateButton.h */,
@@ -237,6 +243,7 @@
 			files = (
 				ECFADEFE963335EF352705A62F6D61A5 /* Pods-ios-util_Tests-umbrella.h in Headers */,
 				E7A7E3281BE0D364002004B3 /* TKSwitch.h in Headers */,
+				E752CE031BEA626C0080F50B /* TKPickerViewWithFRC.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E752CE041BEA626C0080F50B /* TKPickerViewWithFRC.m in Sources */,
 				E7A7E3291BE0D364002004B3 /* TKSwitch.m in Sources */,
 				93864C9227104722A4FC8CA6CB63DEAA /* Pods-ios-util_Tests-dummy.m in Sources */,
 			);

@@ -1,20 +1,20 @@
 //
-//  APWPickerViewWithFRC.m
-//  SBB
+//  TKPickerViewWithFRC.m
+//  iOS-util
 //
 //  Created by Tom Knapen on 04/11/15.
-//  Copyright © 2015 Appwise. All rights reserved.
+//  Copyright © 2015 Tom Knapen. All rights reserved.
 //
 
-#import "APWPickerViewWithFRC.h"
+#import "TKPickerViewWithFRC.h"
 
-@interface APWPickerViewWithFRC () <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface TKPickerViewWithFRC () <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
-@implementation APWPickerViewWithFRC
+@implementation TKPickerViewWithFRC
 
 #pragma mark - UIPickerView
 
@@ -33,7 +33,7 @@
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
 	NSIndexPath *const indexPath = [NSIndexPath indexPathForRow:row inSection:component];
 	id data = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	return [self.apwDelegate titleForRowAtIndexPath:indexPath withData:data];
+	return [self.apwDelegate pickerView:self titleForRowAtIndexPath:indexPath withData:data];
 }
 
 #pragma mark - Helpers

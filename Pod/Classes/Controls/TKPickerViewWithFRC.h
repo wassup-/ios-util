@@ -17,6 +17,9 @@
 -(NSFetchedResultsController *)newFetchedResultsController;
 -(NSString *)pickerView:(TKPickerViewWithFRC *)pickerView titleForRowAtIndexPath:(NSIndexPath *)indexPath withData:(id)data;
 
+@optional
+-(void)pickerView:(TKPickerViewWithFRC *)pickerView didSelectRowAtIndexPath:(NSIndexPath *)indexPath withData:(id)data;
+
 @end
 
 @interface TKPickerViewWithFRC : UIPickerView

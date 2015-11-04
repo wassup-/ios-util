@@ -18,6 +18,14 @@
 
 #pragma mark - UIPickerView
 
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+	if([self.apwDelegate respondsToSelector:@selector(pickerView:didSelectRowAtIndexPath:withData:)]) {
+		NSIndexPath *const indexPath = [NSIndexPath indexPathForRow:row inSection:component];
+		id data = [self.fetchedResultsController objectAtIndexPath:indexPath];
+		[self.apwDelegate pickerView:self didSelectRowAtIndexPath:indexPath withData:data];
+	}
+}
+
 #pragma mark - UIPickerViewDataSource
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {

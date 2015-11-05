@@ -13,16 +13,16 @@
 		93864C9227104722A4FC8CA6CB63DEAA /* Pods-ios-util_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057C7DCC0313FB9CE327F4C1DF3EBE3 /* Pods-ios-util_Tests-dummy.m */; };
 		9CFF145A44D19BBA61477A27441C56BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B9FFC363C77A5BF0308D5CD36A9586 /* Foundation.framework */; };
 		E175C9D82DBFD13265CE1326E83700BC /* ios-util-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B9DCFA8A452E1C4F7122F90BAB0C646 /* ios-util-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E752CE031BEA626C0080F50B /* TKPickerViewWithFRC.h in Headers */ = {isa = PBXBuildFile; fileRef = E752CE011BEA626C0080F50B /* TKPickerViewWithFRC.h */; };
-		E752CE041BEA626C0080F50B /* TKPickerViewWithFRC.m in Sources */ = {isa = PBXBuildFile; fileRef = E752CE021BEA626C0080F50B /* TKPickerViewWithFRC.m */; };
-		E77670A91BBD874B00B196AA /* MultiStateButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E77670A71BBD874B00B196AA /* MultiStateButton.h */; };
-		E77670AA1BBD874B00B196AA /* MultiStateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E77670A81BBD874B00B196AA /* MultiStateButton.m */; };
+		E7205E6D1BEB9A18009EDC6C /* MultiStateButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E7205E671BEB9A18009EDC6C /* MultiStateButton.h */; };
+		E7205E6E1BEB9A18009EDC6C /* MultiStateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E7205E681BEB9A18009EDC6C /* MultiStateButton.m */; };
+		E7205E6F1BEB9A18009EDC6C /* TKPickerViewWithFRC.h in Headers */ = {isa = PBXBuildFile; fileRef = E7205E691BEB9A18009EDC6C /* TKPickerViewWithFRC.h */; };
+		E7205E701BEB9A18009EDC6C /* TKPickerViewWithFRC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7205E6A1BEB9A18009EDC6C /* TKPickerViewWithFRC.m */; };
+		E7205E711BEB9A18009EDC6C /* TKSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = E7205E6B1BEB9A18009EDC6C /* TKSwitch.h */; };
+		E7205E721BEB9A18009EDC6C /* TKSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = E7205E6C1BEB9A18009EDC6C /* TKSwitch.m */; };
 		E77AEF651BBA97FE0036A736 /* Categories in Resources */ = {isa = PBXBuildFile; fileRef = E77AEF611BBA97FE0036A736 /* Categories */; };
 		E77AEF661BBA97FE0036A736 /* Controllers in Resources */ = {isa = PBXBuildFile; fileRef = E77AEF621BBA97FE0036A736 /* Controllers */; };
 		E77AEF671BBA97FE0036A736 /* Helpers in Resources */ = {isa = PBXBuildFile; fileRef = E77AEF631BBA97FE0036A736 /* Helpers */; };
 		E77AEF681BBA97FE0036A736 /* Views in Resources */ = {isa = PBXBuildFile; fileRef = E77AEF641BBA97FE0036A736 /* Views */; };
-		E7A7E3281BE0D364002004B3 /* TKSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = E7A7E3261BE0D364002004B3 /* TKSwitch.h */; };
-		E7A7E3291BE0D364002004B3 /* TKSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A7E3271BE0D364002004B3 /* TKSwitch.m */; };
 		ECFADEFE963335EF352705A62F6D61A5 /* Pods-ios-util_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C44CD253FE1E4B98D942ADFC2006331 /* Pods-ios-util_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -64,16 +64,16 @@
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C79E6AF8E2793936D8A200A30FB3C619 /* Pods-ios-util_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ios-util_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D098FABB6A5A8F57368EF01FA0125970 /* Pods-ios-util_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ios-util_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		E752CE011BEA626C0080F50B /* TKPickerViewWithFRC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKPickerViewWithFRC.h; sourceTree = "<group>"; };
-		E752CE021BEA626C0080F50B /* TKPickerViewWithFRC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKPickerViewWithFRC.m; sourceTree = "<group>"; };
-		E77670A71BBD874B00B196AA /* MultiStateButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiStateButton.h; sourceTree = "<group>"; };
-		E77670A81BBD874B00B196AA /* MultiStateButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiStateButton.m; sourceTree = "<group>"; };
+		E7205E671BEB9A18009EDC6C /* MultiStateButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiStateButton.h; sourceTree = "<group>"; };
+		E7205E681BEB9A18009EDC6C /* MultiStateButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiStateButton.m; sourceTree = "<group>"; };
+		E7205E691BEB9A18009EDC6C /* TKPickerViewWithFRC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKPickerViewWithFRC.h; sourceTree = "<group>"; };
+		E7205E6A1BEB9A18009EDC6C /* TKPickerViewWithFRC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKPickerViewWithFRC.m; sourceTree = "<group>"; };
+		E7205E6B1BEB9A18009EDC6C /* TKSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSwitch.h; sourceTree = "<group>"; };
+		E7205E6C1BEB9A18009EDC6C /* TKSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSwitch.m; sourceTree = "<group>"; };
 		E77AEF611BBA97FE0036A736 /* Categories */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Categories; sourceTree = "<group>"; };
 		E77AEF621BBA97FE0036A736 /* Controllers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Controllers; sourceTree = "<group>"; };
 		E77AEF631BBA97FE0036A736 /* Helpers */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Helpers; sourceTree = "<group>"; };
 		E77AEF641BBA97FE0036A736 /* Views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Views; sourceTree = "<group>"; };
-		E7A7E3261BE0D364002004B3 /* TKSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSwitch.h; sourceTree = "<group>"; };
-		E7A7E3271BE0D364002004B3 /* TKSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSwitch.m; sourceTree = "<group>"; };
 		E956285F5682F644B12CBE6A557BE4CC /* ios-util.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ios-util.xcconfig"; sourceTree = "<group>"; };
 		FDB9E8721540E2C8766DFF89C0AFF5F9 /* ios-util.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "ios-util.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,7 +170,7 @@
 		98FF519EE08330F7E74C716EDDE3DB01 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				E77670A61BBD870800B196AA /* Controls */,
+				E7205E661BEB9A18009EDC6C /* Controls */,
 				E77AEF611BBA97FE0036A736 /* Categories */,
 				E77AEF621BBA97FE0036A736 /* Controllers */,
 				E77AEF631BBA97FE0036A736 /* Helpers */,
@@ -221,15 +221,15 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		E77670A61BBD870800B196AA /* Controls */ = {
+		E7205E661BEB9A18009EDC6C /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				E752CE011BEA626C0080F50B /* TKPickerViewWithFRC.h */,
-				E752CE021BEA626C0080F50B /* TKPickerViewWithFRC.m */,
-				E7A7E3261BE0D364002004B3 /* TKSwitch.h */,
-				E7A7E3271BE0D364002004B3 /* TKSwitch.m */,
-				E77670A71BBD874B00B196AA /* MultiStateButton.h */,
-				E77670A81BBD874B00B196AA /* MultiStateButton.m */,
+				E7205E671BEB9A18009EDC6C /* MultiStateButton.h */,
+				E7205E681BEB9A18009EDC6C /* MultiStateButton.m */,
+				E7205E691BEB9A18009EDC6C /* TKPickerViewWithFRC.h */,
+				E7205E6A1BEB9A18009EDC6C /* TKPickerViewWithFRC.m */,
+				E7205E6B1BEB9A18009EDC6C /* TKSwitch.h */,
+				E7205E6C1BEB9A18009EDC6C /* TKSwitch.m */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -241,9 +241,10 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7205E6D1BEB9A18009EDC6C /* MultiStateButton.h in Headers */,
+				E7205E711BEB9A18009EDC6C /* TKSwitch.h in Headers */,
 				ECFADEFE963335EF352705A62F6D61A5 /* Pods-ios-util_Tests-umbrella.h in Headers */,
-				E7A7E3281BE0D364002004B3 /* TKSwitch.h in Headers */,
-				E752CE031BEA626C0080F50B /* TKPickerViewWithFRC.h in Headers */,
+				E7205E6F1BEB9A18009EDC6C /* TKPickerViewWithFRC.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +253,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E175C9D82DBFD13265CE1326E83700BC /* ios-util-umbrella.h in Headers */,
-				E77670A91BBD874B00B196AA /* MultiStateButton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +368,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E77670AA1BBD874B00B196AA /* MultiStateButton.m in Sources */,
 				6C9E000DCB75C55367C0536071DE30C6 /* ios-util-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,9 +376,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E752CE041BEA626C0080F50B /* TKPickerViewWithFRC.m in Sources */,
-				E7A7E3291BE0D364002004B3 /* TKSwitch.m in Sources */,
 				93864C9227104722A4FC8CA6CB63DEAA /* Pods-ios-util_Tests-dummy.m in Sources */,
+				E7205E6E1BEB9A18009EDC6C /* MultiStateButton.m in Sources */,
+				E7205E721BEB9A18009EDC6C /* TKSwitch.m in Sources */,
+				E7205E701BEB9A18009EDC6C /* TKPickerViewWithFRC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

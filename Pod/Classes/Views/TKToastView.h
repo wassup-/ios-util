@@ -21,6 +21,6 @@
 
 -(void)hide;
 
-+(void)showToast:(NSString*)text inView:(UIView*)parentView withDuration:(NSTimeInterval)duration;
++(instancetype)showToast:(NSString*)text inView:(UIView*)parentView withDuration:(NSTimeInterval)duration;
 
 @end

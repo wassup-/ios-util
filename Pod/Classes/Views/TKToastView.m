@@ -115,7 +115,7 @@ static CGFloat const kLabelInset = 10.;
 	}];
 }
 
-+(void)showToast:(NSString *)text inView:(UIView *)parentView withDuration:(NSTimeInterval)duration {
++(instancetype)showToast:(NSString *)text inView:(UIView *)parentView withDuration:(NSTimeInterval)duration {
 	NSInteger toastsInParent = 0;
 	for(UIView *subview in parentView.subviews) {
 		if([subview isKindOfClass:TKToastView.class])
@@ -131,6 +131,7 @@ static CGFloat const kLabelInset = 10.;
 	toast.removeOnHide = YES;
 	
 	[toast showInView:parentView withDuration:duration];
+	return toast;
 }
 
 @end

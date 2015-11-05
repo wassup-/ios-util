@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-IB_DESIGNABLE
 @interface UIPlaceholderTextView : UITextView
 
 @property (nonatomic, readonly) UILabel *placeholderLabel;

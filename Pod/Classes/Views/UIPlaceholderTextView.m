@@ -25,6 +25,13 @@ static NSInteger const kPlaceholderLabelTag = 999;
 											   object: nil];
 }
 
+-(void)layoutSubViews {
+	[super layoutSubViews];
+	
+	CGRect rect = CGRectMake(4, 8, self.bounds.size.width - 16, 0);
+	self.placeholderLabel.frame = rect;
+}
+
 #pragma mark - Actions
 
 -(void)textChanged:(id)sender {

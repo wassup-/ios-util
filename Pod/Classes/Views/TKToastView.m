@@ -61,7 +61,10 @@ static CGFloat const kLabelInset = 10.;
 
 -(UILabel *)textLabel {
 	if(!_textLabel) {
-		_textLabel = [[UILabel alloc] initWithFrame:CGRectMake((kLabelInset / 2.), (kLabelInset / 2.), self.frame.size.width - kLabelInset, self.frame.size.height - kLabelInset)];
+		_textLabel = [[UILabel alloc] initWithFrame:CGRectMake((kLabelInset / 2.),
+															   (kLabelInset / 2.),
+															   self.frame.size.width - kLabelInset,
+															   self.frame.size.height - kLabelInset)];
 		_textLabel.backgroundColor = UIColor.clearColor;
 		_textLabel.textAlignment = NSTextAlignmentCenter;
 		_textLabel.textColor = UIColor.whiteColor;
@@ -84,19 +87,23 @@ static CGFloat const kLabelInset = 10.;
 #pragma mark - Methods
 
 -(void)show {
-	[UIView animateWithDuration:.4 animations:^{
-		self.alpha = .9;
-		self.textLabel.alpha = .9;
-	} completion:nil];
+	[UIView animateWithDuration: .4
+					 animations: ^{
+						 self.alpha = .9;
+						 self.textLabel.alpha = .9;
+					 }
+					 completion: nil];
 }
 
 -(void)showWithDuration:(NSTimeInterval)duration {
 	[self show];
-	[self performSelector:@selector(hide) withObject:nil afterDelay:duration];
+	[self performSelector: @selector(hide)
+			   withObject: nil
+			   afterDelay: duration];
 }
 
 -(void)showInView:(UIView *)parentView {
-	[parentView addSubview:self];
+	[parentView addSubview: self];
 	[self show];
 }
 
@@ -106,31 +113,37 @@ static CGFloat const kLabelInset = 10.;
 }
 
 -(void)hide {
-	[UIView animateWithDuration:.4 animations:^{
-		self.alpha = 0.;
-		self.textLabel.alpha = 0.;
-	} completion:^(BOOL finished) {
-		if(finished && self.removeOnHide)
-			[self removeFromSuperview];
-	}];
+	[UIView animateWithDuration: .4
+					 animations: ^{
+						 self.alpha = 0.;
+						 self.textLabel.alpha = 0.;
+					 }
+					 completion: ^(BOOL finished) {
+						 if(finished && self.removeOnHide)
+							 [self removeFromSuperview];
+					 }];
 }
 
 +(instancetype)showToast:(NSString *)text inView:(UIView *)parentView withDuration:(NSTimeInterval)duration {
 	NSInteger toastsInParent = 0;
 	for(UIView *subview in parentView.subviews) {
-		if([subview isKindOfClass:TKToastView.class])
+		if([subview isKindOfClass: TKToastView.class])
 			toastsInParent += 1;
 	}
 	
 	const CGRect parentFrame = parentView.frame;
 	const CGFloat yOrigin = parentFrame.size.height - ((kToastHeight + kToastGap) * (toastsInParent + 1));
-	const CGRect selfFrame = CGRectMake(parentFrame.origin.x + kToastMargin, yOrigin, parentFrame.size.width - (kToastMargin * 2.), kToastHeight);
+	const CGRect selfFrame = CGRectMake(parentFrame.origin.x + kToastMargin,
+										yOrigin,
+										parentFrame.size.width - (kToastMargin * 2.),
+										kToastHeight);
 
-	TKToastView *const toast = [[TKToastView alloc] initWithFrame:selfFrame];
+	TKToastView *const toast = [[TKToastView alloc] initWithFrame: selfFrame];
 	toast.text = text;
 	toast.removeOnHide = YES;
 	
-	[toast showInView:parentView withDuration:duration];
+	[toast showInView: parentView
+		 withDuration: duration];
 	return toast;
 }
 

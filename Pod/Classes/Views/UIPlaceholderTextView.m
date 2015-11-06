@@ -25,8 +25,8 @@ static NSInteger const kPlaceholderLabelTag = 999;
 											   object: nil];
 }
 
--(void)layoutSubViews {
-	[super layoutSubViews];
+-(void)layoutSubviews {
+	[super layoutSubviews];
 	
 	CGRect rect = CGRectMake(4, 8, self.bounds.size.width - 16, 0);
 	self.placeholderLabel.frame = rect;

@@ -50,13 +50,13 @@ CGRect CGMakeRect(CGPoint origin, CGSize size) {
 }
 
 -(UIView*)createNewView {
-	UIView *newView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+	UIView *const newView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
 	return newView;
 }
 
 -(UILabel*)createNewTitleLabel:(SwitchSide)side {
 	const CGFloat offsetX = (side == SwitchSideLeft) ? 0 : (self.bounds.size.width / 2.);
-	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 0, self.bounds.size.width / 2., self.bounds.size.height)];
+	UILabel *const label = [[UILabel alloc] initWithFrame:CGRectMake(offsetX, 0, self.bounds.size.width / 2., self.bounds.size.height)];
 	label.lineBreakMode = NSLineBreakByTruncatingTail;
 	label.textAlignment = NSTextAlignmentCenter;
 	label.enabled = YES;
@@ -107,10 +107,10 @@ CGRect CGMakeRect(CGPoint origin, CGSize size) {
 	self.selectedTitleColor = UIColor.whiteColor;
 	
 	// Gestures
-	UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+	UITapGestureRecognizer *const tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
 	[self addGestureRecognizer:tapGesture];
 	
-	UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+	UIPanGestureRecognizer *const panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
 	[self addGestureRecognizer:panGesture];
 	
 	// Observers

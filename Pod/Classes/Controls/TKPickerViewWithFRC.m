@@ -68,7 +68,7 @@
 }
 
 -(void)performBatchUpdates {
-	NSSet *const sections = self.modifiedSections;
+	NSSet<NSNumber *> *const sections = self.modifiedSections;
 	for(NSNumber *section in sections) {
 		[self reloadComponent:[section integerValue]];
 	}

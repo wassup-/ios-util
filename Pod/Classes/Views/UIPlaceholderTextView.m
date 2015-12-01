@@ -18,7 +18,7 @@ static NSInteger const kPlaceholderLabelTag = 999;
 
 -(void)awakeFromNib {
 	[super awakeFromNib];
-	
+
 	[[NSNotificationCenter defaultCenter] addObserver: self
 											 selector: @selector(textChanged:)
 												 name: UITextViewTextDidChangeNotification
@@ -27,9 +27,10 @@ static NSInteger const kPlaceholderLabelTag = 999;
 
 -(void)layoutSubviews {
 	[super layoutSubviews];
-	
+
 	CGRect rect = CGRectMake(4, 8, self.bounds.size.width - 16, 0);
 	self.placeholderLabel.frame = rect;
+	[self.placeholderLabel sizeToFit];
 }
 
 #pragma mark - Actions
@@ -58,7 +59,7 @@ static NSInteger const kPlaceholderLabelTag = 999;
 		_placeholderLabel.textColor = [UIColor colorWithWhite:.71 alpha:1.];
 		_placeholderLabel.tag = kPlaceholderLabelTag;
 		_placeholderLabel.font = self.font;
-		
+
 		[self addSubview:_placeholderLabel];
 	}
 	return _placeholderLabel;
@@ -99,7 +100,7 @@ static NSInteger const kPlaceholderLabelTag = 999;
 
 -(void)setText:(NSString *)text {
 	[super setText:text];
-	
+
 	[self updatePlaceholderVisibility];
 }
 

@@ -250,6 +250,7 @@ BOOL isVectorInSection(CGVector vector, Section section) {
 
 -(void)valueChanged:(NSInteger)value {
 	[self.delegate circularSliderView:self valueChanged:value];
+	[self sendActionsForControlEvents:UIControlEventValueChanged];
 }
 
 -(void)draggingDidStart:(NSInteger)value {

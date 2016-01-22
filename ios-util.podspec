@@ -8,14 +8,14 @@
 
 Pod::Spec.new do |s|
   s.name             = "ios-util"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "Utility library for iOS development."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
 #   * Try to keep it short, snappy and to the point.
 #   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
+#   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description      = <<-DESC
                         This utility library contains classes (controllers, views, categories, ...) which may help/speedup iOS application development.
                        DESC

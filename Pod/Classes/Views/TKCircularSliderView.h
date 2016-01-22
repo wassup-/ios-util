@@ -25,7 +25,7 @@
 
 @end
 
-@interface TKCircularSliderView : UIView
+@interface TKCircularSliderView : UIControl
 
 @property (nonatomic, assign) IBInspectable NSInteger minimumValue;
 @property (nonatomic, assign) IBInspectable NSInteger maximumValue;

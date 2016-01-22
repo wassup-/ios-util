@@ -34,6 +34,6 @@
 @property (nonatomic, assign) IBInspectable CGFloat animationSpringDamping;
 @property (nonatomic, assign) IBInspectable CGFloat animationInitialSpringVelocity;
 
-@property (nonatomic, weak) id<TKSwitchProtocol> delegate;
+@property (nonatomic, weak) id<TKSwitchProtocol> tkDelegate;
 
 @end

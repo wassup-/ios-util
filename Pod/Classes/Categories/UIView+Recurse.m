@@ -10,7 +10,7 @@
 
 @implementation UIView (Recurse)
 
--(BOOL)isSuperOfViewOfClass:(Class)kind {
+-(BOOL)isSuperOfClass:(Class)kind {
 	return [self firstDescendantOfClass:kind] != nil;
 }
 
@@ -37,7 +37,7 @@
 	return last;
 }
 
--(BOOL)isDescendantOfViewOfClass:(Class)kind {
+-(BOOL)isDescendantOfClass:(Class)kind {
 	UIView *view = self;
 	while(view) {
 		if([view isKindOfClass:kind])
@@ -69,8 +69,8 @@
 }
 
 
--(BOOL)isSuperOfViewOfClassWithName:(NSString *)name {
-	return [self isSuperOfViewOfClass:NSClassFromString(name)];
+-(BOOL)isSuperOfClassWithName:(NSString *)name {
+	return [self isSuperOfClass:NSClassFromString(name)];
 }
 
 -(UIView *)firstDescendantOfClassWithName:(NSString *)name {
@@ -82,8 +82,8 @@
 }
 
 
--(BOOL)isDescendantOfViewOfClassWithName:(NSString *)name {
-	return [self isDescendantOfViewOfClass:NSClassFromString(name)];
+-(BOOL)isDescendantOfClassWithName:(NSString *)name {
+	return [self isDescendantOfClass:NSClassFromString(name)];
 }
 
 -(UIView *)firstSuperOfClassWithName:(NSString *)name {

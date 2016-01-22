@@ -24,7 +24,7 @@
 
 @interface TKPickerViewWithFRC : UIPickerView
 
-@property (nonatomic, weak) id<TKPickerViewWithFRCProtocol> apwDelegate;
+@property (nonatomic, weak) id<TKPickerViewWithFRCProtocol> tkDelegate;
 
 -(void)reloadData;
 

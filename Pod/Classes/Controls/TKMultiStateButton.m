@@ -1,52 +1,52 @@
 //
-//  MultiStateButton.m
+//  TKMultiStateButton.m
 //  iOS-util
 //
 //  Created by Tom Knapen on 01/10/15.
 //  Copyright © 2015 Tom Knapen. All rights reserved.
 //
 
-#import "MultiStateButton.h"
+#import "TKMultiStateButton.h"
 
-@interface InteractionRegion ()
+@interface TKInteractionRegion ()
 
--(BOOL)containsPoint:(CGPoint)point inButton:(MultiStateButton*)button;
+-(BOOL)containsPoint:(CGPoint)point inButton:(TKMultiStateButton*)button;
 
 @end
 
-@implementation InteractionRegion
+@implementation TKInteractionRegion
 @synthesize region = _region;
 @synthesize action = _action;
 
--(instancetype)initWithRegion:(MultiStateButtonInteractionRegion)region {
+-(instancetype)initWithRegion:(TKMultiStateButtonInteractionRegion)region {
 	return [self initWithRegion:region andAction:nil];
 }
 
--(instancetype)initWithRegion:(MultiStateButtonInteractionRegion)region andAction:(MultiStateButtonAction)action {
+-(instancetype)initWithRegion:(TKMultiStateButtonInteractionRegion)region andAction:(TKMultiStateButtonAction)action {
 	self = [super init];
 	_region = region;
 	_action = action;
 	return self;
 }
 
--(CGRect)rectForRegion:(MultiStateButtonInteractionRegion)region inRect:(CGRect)rect {
+-(CGRect)rectForRegion:(TKMultiStateButtonInteractionRegion)region inRect:(CGRect)rect {
 	switch(region) {
-		case MultiStateButtonInteractionRegionTop:
+		case TKMultiStateButtonInteractionRegionTop:
 			return CGRectMake(0.,
 							  0.,
 							  rect.size.width,
 							  rect.size.height / 2.);
-		case MultiStateButtonInteractionRegionRight:
+		case TKMultiStateButtonInteractionRegionRight:
 			return CGRectMake(rect.size.width / 2.,
 							  0.,
 							  rect.size.width / 2.,
 							  rect.size.height);
-		case MultiStateButtonInteractionRegionBottom:
+		case TKMultiStateButtonInteractionRegionBottom:
 			return CGRectMake(0.,
 							  rect.size.height / 2.,
 							  rect.size.width,
 							  rect.size.height / 2.);
-		case MultiStateButtonInteractionRegionLeft:
+		case TKMultiStateButtonInteractionRegionLeft:
 			return CGRectMake(0.,
 							  0.,
 							  rect.size.width / 2.,
@@ -56,18 +56,18 @@
 
 -(CGRect)rectInRect:(CGRect)parentRect {
 	CGRect rect = CGRectMake(0, 0, parentRect.size.width, parentRect.size.height);
-	if(self.region & MultiStateButtonInteractionRegionTop)
-		rect = CGRectIntersection(rect, [self rectForRegion:MultiStateButtonInteractionRegionTop inRect:parentRect]);
-	if(self.region & MultiStateButtonInteractionRegionRight)
-		rect = CGRectIntersection(rect, [self rectForRegion:MultiStateButtonInteractionRegionRight inRect:parentRect]);
-	if(self.region & MultiStateButtonInteractionRegionBottom)
-		rect = CGRectIntersection(rect, [self rectForRegion:MultiStateButtonInteractionRegionBottom inRect:parentRect]);
-	if(self.region & MultiStateButtonInteractionRegionLeft)
-		rect = CGRectIntersection(rect, [self rectForRegion:MultiStateButtonInteractionRegionLeft inRect:parentRect]);
+	if(self.region & TKMultiStateButtonInteractionRegionTop)
+		rect = CGRectIntersection(rect, [self rectForRegion:TKMultiStateButtonInteractionRegionTop inRect:parentRect]);
+	if(self.region & TKMultiStateButtonInteractionRegionRight)
+		rect = CGRectIntersection(rect, [self rectForRegion:TKMultiStateButtonInteractionRegionRight inRect:parentRect]);
+	if(self.region & TKMultiStateButtonInteractionRegionBottom)
+		rect = CGRectIntersection(rect, [self rectForRegion:TKMultiStateButtonInteractionRegionBottom inRect:parentRect]);
+	if(self.region & TKMultiStateButtonInteractionRegionLeft)
+		rect = CGRectIntersection(rect, [self rectForRegion:TKMultiStateButtonInteractionRegionLeft inRect:parentRect]);
 	return rect;
 }
 
--(BOOL)containsPoint:(CGPoint)point inButton:(MultiStateButton *)button {
+-(BOOL)containsPoint:(CGPoint)point inButton:(TKMultiStateButton *)button {
 	const CGRect myRect = [self rectInRect:button.frame];
 	return CGRectContainsPoint(myRect, point);
 }
@@ -75,14 +75,14 @@
 @end
 
 
-@interface MultiStateButton ()
+@interface TKMultiStateButton ()
 
 @property (nonatomic, strong) UIImage *originalBackgroundImage;
-@property (nonatomic, strong) NSMutableArray<InteractionRegion *> *realInteractionRegions;
+@property (nonatomic, strong) NSMutableArray<TKInteractionRegion *> *realInteractionRegions;
 
 @end
 
-@implementation MultiStateButton
+@implementation TKMultiStateButton
 @synthesize backgroundImageView = _backgroundImageView;
 
 #pragma mark - Initialization
@@ -113,12 +113,12 @@
 
 #pragma mark - Methods
 
--(void)addInteraction:(InteractionRegion *)interaction {
+-(void)addInteraction:(TKInteractionRegion *)interaction {
 	[self.realInteractionRegions addObject:interaction];
 }
 
--(void)removeInteractionRegion:(MultiStateButtonInteractionRegion)region {
-	for(InteractionRegion *interactionRegion in self.realInteractionRegions) {
+-(void)removeInteractionRegion:(TKMultiStateButtonInteractionRegion)region {
+	for(TKInteractionRegion *interactionRegion in self.realInteractionRegions) {
 		if(interactionRegion.region == region) {
 			[self.realInteractionRegions removeObject:interactionRegion];
 			break;
@@ -156,9 +156,9 @@
 
 -(void)onTouchDown:(UITouch *)touch {
 	const CGPoint position = [touch locationInView:self];
-	for(InteractionRegion *interactionRegion in self.interactionRegions) {
+	for(TKInteractionRegion *interactionRegion in self.interactionRegions) {
 		if([interactionRegion containsPoint:position inButton:self]) {
-			self.buttonState = MultiStateButtonStateActive;
+			self.buttonState = TKMultiStateButtonStateActive;
 			interactionRegion.action(self);
 			[self.interactionDelegate userInteraction:self inRegion:interactionRegion.region];
 			[self sendActionsForControlEvents:UIControlEventValueChanged];
@@ -168,7 +168,7 @@
 }
 
 -(void)onTouchUp:(UITouch *)touch {
-	self.buttonState = MultiStateButtonStateInactive;
+	self.buttonState = TKMultiStateButtonStateInactive;
 	self.backgroundImage = self.originalBackgroundImage;
 }
 
@@ -184,7 +184,7 @@
 	return _backgroundImageView;
 }
 
--(NSArray<InteractionRegion *> *)interactionRegions {
+-(NSArray<TKInteractionRegion *> *)interactionRegions {
 	return self.realInteractionRegions;
 }
 
@@ -202,11 +202,11 @@
 
 @end
 
-@implementation InteractionRegion (EasyConstruct)
+@implementation TKInteractionRegion (EasyConstruct)
 
-+(instancetype)interactionWithRegion:(MultiStateButtonInteractionRegion)region thatChangesBackgroundImageTo:(UIImage *)image {
++(instancetype)interactionWithRegion:(TKMultiStateButtonInteractionRegion)region thatChangesBackgroundImageTo:(UIImage *)image {
 		return [[self alloc] initWithRegion: region
-								  andAction: ^(MultiStateButton *button) {
+								  andAction: ^(TKMultiStateButton *button) {
 									  button.backgroundImage = image;
 								  }];
 }

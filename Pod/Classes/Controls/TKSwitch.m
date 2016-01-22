@@ -318,12 +318,12 @@ CGRect CGMakeRect(CGPoint origin, CGSize size) {
 }
 
 -(void)selectedIndexWillChange:(NSInteger)selectedIndex {
-	if([self.delegate respondsToSelector:@selector(selectedIndexWillChange:toIndex:)])
-		[self.delegate selectedIndexWillChange:self toIndex:selectedIndex];
+	if([self.tkDelegate respondsToSelector:@selector(selectedIndexWillChange:toIndex:)])
+		[self.tkDelegate selectedIndexWillChange:self toIndex:selectedIndex];
 }
 
 -(void)selectedIndexChanged:(NSInteger)selectedIndex {
-	[self.delegate selectedIndexChanged:self selectedIndex:selectedIndex];
+	[self.tkDelegate selectedIndexChanged:self selectedIndex:selectedIndex];
 }
 
 @end

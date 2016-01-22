@@ -27,10 +27,10 @@
 #pragma mark - UIPickerView
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-	if([self.apwDelegate respondsToSelector:@selector(pickerView:didSelectRowAtIndexPath:withData:)]) {
+	if([self.tkDelegate respondsToSelector:@selector(pickerView:didSelectRowAtIndexPath:withData:)]) {
 		NSIndexPath *const indexPath = [NSIndexPath indexPathForRow:row inSection:component];
 		id data = [self dataForRowAtIndexPath:indexPath];
-		[self.apwDelegate pickerView:self didSelectRowAtIndexPath:indexPath withData:data];
+		[self.tkDelegate pickerView:self didSelectRowAtIndexPath:indexPath withData:data];
 	}
 }
 
@@ -49,7 +49,7 @@
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
 	NSIndexPath *const indexPath = [NSIndexPath indexPathForRow:row inSection:component];
 	id data = [self dataForRowAtIndexPath:indexPath];
-	return [self.apwDelegate pickerView:self titleForRowAtIndexPath:indexPath withData:data];
+	return [self.tkDelegate pickerView:self titleForRowAtIndexPath:indexPath withData:data];
 }
 
 #pragma mark - Helpers
@@ -77,7 +77,7 @@
 #pragma mark - Properties
 
 -(void)setApwDelegate:(id<TKPickerViewWithFRCProtocol>)apwDelegate {
-	_apwDelegate = apwDelegate;
+	_tkDelegate = apwDelegate;
 	[self reloadData];
 	self.dataSource = self;
 	self.delegate = self;
@@ -85,7 +85,7 @@
 
 -(NSFetchedResultsController *)fetchedResultsController {
 	if(!_fetchedResultsController) {
-		_fetchedResultsController = [self.apwDelegate newFetchedResultsController];
+		_fetchedResultsController = [self.tkDelegate newFetchedResultsController];
 		_fetchedResultsController.delegate = self;
 	}
 	return _fetchedResultsController;

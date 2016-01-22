@@ -10,19 +10,19 @@
 
 @interface UIView (Recurse)
 
--(BOOL)isSuperOfViewOfClass:(Class)kind;
+-(BOOL)isSuperOfClass:(Class)kind;
 -(UIView *)firstDescendantOfClass:(Class)kind;
 -(UIView *)lastDescendantOfClass:(Class)kind;
 
--(BOOL)isDescendantOfViewOfClass:(Class)kind;
+-(BOOL)isDescendantOfClass:(Class)kind;
 -(UIView *)firstSuperOfClass:(Class)kind;
 -(UIView *)lastSuperOfClass:(Class)kind;
 
--(BOOL)isSuperOfViewOfClassWithName:(NSString *)name;
+-(BOOL)isSuperOfClassWithName:(NSString *)name;
 -(UIView *)firstDescendantOfClassWithName:(NSString *)name;
 -(UIView *)lastDescendantOfClassWithName:(NSString *)name;
 
--(BOOL)isDescendantOfViewOfClassWithName:(NSString *)name;
+-(BOOL)isDescendantOfClassWithName:(NSString *)name;
 -(UIView *)firstSuperOfClassWithName:(NSString *)name;
 -(UIView *)lastSuperOfClassWithName:(NSString *)name;
 

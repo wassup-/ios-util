@@ -16,7 +16,7 @@
 
 @end
 
-static CGFloat const kTopViewMinHeight = 300.;
+static CGFloat const kTopViewMinHeight = 0.;
 static CGFloat const kTopViewMaxHeight = 400.;
 
 @implementation TKScrollViewController
@@ -27,16 +27,10 @@ static CGFloat const kTopViewMaxHeight = 400.;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	self.scrollView.delegate = self;
-	self.bottomOffset = -100;
-	
+
 	[self.topView mas_updateConstraints:^(MASConstraintMaker *make) {
 		make.top.equalTo(self.mas_topLayoutGuide);
 	}];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)scrollToTop:(BOOL)animated {
@@ -52,7 +46,7 @@ static CGFloat const kTopViewMaxHeight = 400.;
 -(void)setIsScrolling:(BOOL)isScrolling {
 	if(isScrolling != self.isScrolling) {
 		_isScrolling = isScrolling;
-		
+
 		if(_isScrolling) {
 			[self scrollingDidStart:self.scrollView.contentOffset.y];
 		} else {
@@ -66,31 +60,27 @@ static CGFloat const kTopViewMaxHeight = 400.;
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	// Sanity check
 	if(scrollView != self.scrollView) return;
-	
+
 	self.isScrolling = YES;
-	
+
 	const CGFloat minHeight = [self minimumHeight];
 	const CGFloat maxHeight = [self maximumHeight];
 	const CGPoint offset = scrollView.contentOffset;
 	const CGFloat offsetY = offset.y + self.scrollView.contentInset.top;
 	const CGFloat height = (maxHeight - offsetY) - self.bottomOffset;
 	const CGFloat clampedHeight = fmax(minHeight, fmin(maxHeight, height));
-	
+
 	[self.topView mas_updateConstraints:^(MASConstraintMaker *make) {
 		make.height.mas_equalTo(clampedHeight);
 	}];
-	
-	[self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
-		make.top.equalTo(self.mas_bottomLayoutGuide).offset(self.bottomOffset - offsetY);
-	}];
-	
+
 	[self didScroll:height];
-	
+
 	if(height < minHeight) {
 		[self lessThanMinimum:height];
 	} else {
 		[self greaterThanMinimum:height];
-		
+
 		if(height < maxHeight) {
 			[self lessThanMaximum:height];
 		} else {
@@ -102,7 +92,7 @@ static CGFloat const kTopViewMaxHeight = 400.;
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 	// Sanity check
 	if(scrollView != self.scrollView) return;
-	
+
 	self.isScrolling = NO;
 }
 

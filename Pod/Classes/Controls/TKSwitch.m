@@ -6,6 +6,12 @@
 //  Copyright © 2015 Tom Knapen. All rights reserved.
 //
 
+/**
+ *
+ * Based on: https://github.com/gontovnik/DGRunkeeperSwitch
+ *
+ */
+
 #import "TKSwitch.h"
 
 @interface TKSwitch () <UIGestureRecognizerDelegate>
@@ -66,78 +72,78 @@ CGRect CGMakeRect(CGPoint origin, CGSize size) {
 
 -(void)initialize {
 	[self.class makeRoundedCorners:self];
-	
+
 	// Springs
 	self.animationDuration = .3;
 	self.animationSpringDamping = .75;
 	self.animationInitialSpringVelocity = 0.;
-	
+
 	self.selectedBackgroundInset = 2.;
-	
+
 	// Views
 	self.selectedBackgroundView = [self createNewView];
 	[self.class makeRoundedCorners:self.selectedBackgroundView];
 	[self addSubview:self.selectedBackgroundView];
-	
+
 	self.titleMaskView = [self createNewView];
 	[self.class makeRoundedCorners:self.titleMaskView];
 	self.titleMaskView.backgroundColor = UIColor.blackColor;
-	
+
 	self.titleLabelsContentView = [self createNewView];
 	self.leftTitleLabel = [self createNewTitleLabel:SwitchSideLeft];
 	self.rightTitleLabel = [self createNewTitleLabel:SwitchSideRight];
-	
+
 	[self.titleLabelsContentView addSubview:self.leftTitleLabel];
 	[self.titleLabelsContentView addSubview:self.rightTitleLabel];
 	[self addSubview:self.titleLabelsContentView];
-	
+
 	self.selectedTitleLabelsContentView = [self createNewView];
 	self.selectedLeftTitleLabel = [self createNewTitleLabel:SwitchSideLeft];
 	self.selectedRightTitleLabel = [self createNewTitleLabel:SwitchSideRight];
-	
+
 	[self.selectedTitleLabelsContentView addSubview:self.selectedLeftTitleLabel];
 	[self.selectedTitleLabelsContentView addSubview:self.selectedRightTitleLabel];
 	[self addSubview:self.selectedTitleLabelsContentView];
-	
+
 	self.selectedTitleLabelsContentView.layer.mask = self.titleMaskView.layer;
-	
+
 	// Default colors
 	self.selectedBackgroundColor = UIColor.whiteColor;
 	self.titleColor = UIColor.whiteColor;
 	self.selectedTitleColor = UIColor.whiteColor;
-	
+
 	// Gestures
 	UITapGestureRecognizer *const tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
 	[self addGestureRecognizer:tapGesture];
-	
+
 	UIPanGestureRecognizer *const panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
 	[self addGestureRecognizer:panGesture];
-	
+
 	// Observers
 	[self addObserver:self forKeyPath:kObserverPath options:NSKeyValueObservingOptionNew context:nil];
 }
 
 -(instancetype)init {
 	self = [super init];
-	
+
 	[self initialize];
-	
+
 	return self;
 }
 
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
 	self = [super initWithCoder:aDecoder];
-	
+
 	[self initialize];
-	
+
 	return self;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
-	
+
 	[self initialize];
-	
+
 	return self;
 }
 
@@ -147,33 +153,33 @@ CGRect CGMakeRect(CGPoint origin, CGSize size) {
 
 -(void)layoutSubviews {
 	[super layoutSubviews];
-	
+
 	const CGFloat selectedBackgroundWidth = (self.bounds.size.width / 2.) - (self.selectedBackgroundInset * 2.);
 	self.selectedBackgroundView.frame = CGRectMake(self.selectedBackgroundInset + (self.selectedIndex * (selectedBackgroundWidth + self.selectedBackgroundInset * 2.)),
 												   self.selectedBackgroundInset,
 												   selectedBackgroundWidth,
 												   self.bounds.size.height - (self.selectedBackgroundInset * 2.));
-	
+
 	const CGFloat titleLabelMaxWidth = selectedBackgroundWidth;
 	const CGFloat titleLabelMaxHeight = self.bounds.size.height - (self.selectedBackgroundInset * 2.);
-	
+
 	{ // LEFT
 		const CGSize TitleLabelSize = CGSizeMake(titleLabelMaxWidth, titleLabelMaxHeight);
 
 		CGPoint TitleLabelOrigin = CGPointMake(floor((self.bounds.size.width / 2.) - TitleLabelSize.width) / 2.,
 											   floor(self.bounds.size.height - TitleLabelSize.height) / 2.);
-		
+
 		CGRect TitleLabelFrame = CGMakeRect(TitleLabelOrigin, TitleLabelSize);
 		self.leftTitleLabel.frame = TitleLabelFrame;
 		self.selectedLeftTitleLabel.frame = TitleLabelFrame;
 	}
-	
+
 	{ // RIGHT
 		const CGSize TitleLabelSize = CGSizeMake(titleLabelMaxWidth, titleLabelMaxHeight);
-		
+
 		CGPoint TitleLabelOrigin = CGPointMake(floor((self.bounds.size.width / 2.) + (self.bounds.size.width / 2. - TitleLabelSize.width) / 2.),
 											   floor(self.bounds.size.height - TitleLabelSize.height) / 2.);
-		
+
 		CGRect TitleLabelFrame = CGMakeRect(TitleLabelOrigin, TitleLabelSize);
 		self.rightTitleLabel.frame = TitleLabelFrame;
 		self.selectedRightTitleLabel.frame = TitleLabelFrame;
@@ -264,7 +270,7 @@ CGRect CGMakeRect(CGPoint origin, CGSize size) {
 -(void)setTitleColor:(UIColor *)titleColor {
 	self.leftTitleLabel.tintColor = titleColor;
 	self.rightTitleLabel.tintColor = titleColor;
-	
+
 	self.leftTitleLabel.textColor = titleColor;
 	self.rightTitleLabel.textColor = titleColor;
 }
@@ -276,7 +282,7 @@ CGRect CGMakeRect(CGPoint origin, CGSize size) {
 -(void)setSelectedTitleColor:(UIColor *)selectedTitleColor {
 	self.selectedLeftTitleLabel.tintColor = selectedTitleColor;
 	self.selectedRightTitleLabel.tintColor = selectedTitleColor;
-	
+
 	self.selectedLeftTitleLabel.textColor = selectedTitleColor;
 	self.selectedRightTitleLabel.textColor = selectedTitleColor;
 }
@@ -288,7 +294,7 @@ CGRect CGMakeRect(CGPoint origin, CGSize size) {
 -(void)setTitleFont:(UIFont *)titleFont {
 	self.leftTitleLabel.font = titleFont;
 	self.rightTitleLabel.font = titleFont;
-	
+
 	self.selectedLeftTitleLabel.font = titleFont;
 	self.selectedRightTitleLabel.font = titleFont;
 }
@@ -299,9 +305,9 @@ CGRect CGMakeRect(CGPoint origin, CGSize size) {
 
 -(void)setSelectedIndex:(NSInteger)selectedIndex {
 	_selectedIndex = selectedIndex;
-	
+
 	[self selectedIndexWillChange:selectedIndex];
-	
+
 	[UIView animateWithDuration: self.animationDuration
 						  delay: 0.
 		 usingSpringWithDamping: self.animationSpringDamping

@@ -19,6 +19,8 @@
 		E7205E701BEB9A18009EDC6C /* TKPickerViewWithFRC.m in Sources */ = {isa = PBXBuildFile; fileRef = E7205E6A1BEB9A18009EDC6C /* TKPickerViewWithFRC.m */; };
 		E7205E711BEB9A18009EDC6C /* TKSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = E7205E6B1BEB9A18009EDC6C /* TKSwitch.h */; };
 		E7205E721BEB9A18009EDC6C /* TKSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = E7205E6C1BEB9A18009EDC6C /* TKSwitch.m */; };
+		E740438A1C5A4F3B0006EEDA /* TKDelayedEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = E74043881C5A4F3B0006EEDA /* TKDelayedEvent.h */; };
+		E740438B1C5A4F3B0006EEDA /* TKDelayedEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E74043891C5A4F3B0006EEDA /* TKDelayedEvent.m */; };
 		E7B4CB1D1BECA7CC00FBF0BB /* TKCircularSliderView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B4CB151BECA7CC00FBF0BB /* TKCircularSliderView.h */; };
 		E7B4CB1E1BECA7CC00FBF0BB /* TKCircularSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B4CB161BECA7CC00FBF0BB /* TKCircularSliderView.m */; };
 		E7B4CB1F1BECA7CC00FBF0BB /* TKGradientBackgroundView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B4CB171BECA7CC00FBF0BB /* TKGradientBackgroundView.h */; };
@@ -120,6 +122,8 @@
 		E7205E6A1BEB9A18009EDC6C /* TKPickerViewWithFRC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKPickerViewWithFRC.m; sourceTree = "<group>"; };
 		E7205E6B1BEB9A18009EDC6C /* TKSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSwitch.h; sourceTree = "<group>"; };
 		E7205E6C1BEB9A18009EDC6C /* TKSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSwitch.m; sourceTree = "<group>"; };
+		E74043881C5A4F3B0006EEDA /* TKDelayedEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDelayedEvent.h; sourceTree = "<group>"; };
+		E74043891C5A4F3B0006EEDA /* TKDelayedEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDelayedEvent.m; sourceTree = "<group>"; };
 		E7B4CB151BECA7CC00FBF0BB /* TKCircularSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKCircularSliderView.h; path = ../Views/TKCircularSliderView.h; sourceTree = "<group>"; };
 		E7B4CB161BECA7CC00FBF0BB /* TKCircularSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKCircularSliderView.m; path = ../Views/TKCircularSliderView.m; sourceTree = "<group>"; };
 		E7B4CB171BECA7CC00FBF0BB /* TKGradientBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGradientBackgroundView.h; sourceTree = "<group>"; };
@@ -330,6 +334,8 @@
 		E7B4CB121BECA77700FBF0BB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E74043881C5A4F3B0006EEDA /* TKDelayedEvent.h */,
+				E74043891C5A4F3B0006EEDA /* TKDelayedEvent.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -373,6 +379,7 @@
 				E7B4CB371BECA7E400FBF0BB /* UIAlertController+Static.h in Headers */,
 				E7B4CB1D1BECA7CC00FBF0BB /* TKCircularSliderView.h in Headers */,
 				E7B4CB1F1BECA7CC00FBF0BB /* TKGradientBackgroundView.h in Headers */,
+				E740438A1C5A4F3B0006EEDA /* TKDelayedEvent.h in Headers */,
 				E7B4CB391BECA7E400FBF0BB /* UIImage+Util.h in Headers */,
 				E7205E6F1BEB9A18009EDC6C /* TKPickerViewWithFRC.h in Headers */,
 				E7B4CB351BECA7E400FBF0BB /* NSPredicate+Combine.h in Headers */,
@@ -539,6 +546,7 @@
 				E7B4CB221BECA7CC00FBF0BB /* TKToastView.m in Sources */,
 				E7B4CB361BECA7E400FBF0BB /* NSPredicate+Combine.m in Sources */,
 				E7B4CB3C1BECA7E400FBF0BB /* UIView+Recurse.m in Sources */,
+				E740438B1C5A4F3B0006EEDA /* TKDelayedEvent.m in Sources */,
 				E7B4CB5E1BECA88900FBF0BB /* NSUserDefaults+Shared.m in Sources */,
 				E7B4CB281BECA7DD00FBF0BB /* TKScrollViewController.m in Sources */,
 				93864C9227104722A4FC8CA6CB63DEAA /* Pods-ios-util_Tests-dummy.m in Sources */,

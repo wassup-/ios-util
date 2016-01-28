@@ -6,6 +6,12 @@
 //  Copyright © 2015 Tom Knapen. All rights reserved.
 //
 
+/**
+ *
+ * Based on: https://github.com/gontovnik/DGRunkeeperSwitch
+ *
+ */
+
 #import <UIKit/UIKit.h>
 
 @class TKSwitch;

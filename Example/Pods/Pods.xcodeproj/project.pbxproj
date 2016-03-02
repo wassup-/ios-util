@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5E0718D35B333026E4724FE2EF993576 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B9FFC363C77A5BF0308D5CD36A9586 /* Foundation.framework */; };
 		6C9E000DCB75C55367C0536071DE30C6 /* ios-util-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ABB4FA300A5692A3D15186AE6A410BA /* ios-util-dummy.m */; };
-		75D2A475ED10BF5B6B45AD8E0FD7E47D /* ios-util.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 570290265909B6C3AA226F7B2F35C8C5 /* ios-util.bundle */; };
 		93864C9227104722A4FC8CA6CB63DEAA /* Pods-ios-util_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057C7DCC0313FB9CE327F4C1DF3EBE3 /* Pods-ios-util_Tests-dummy.m */; };
 		9CFF145A44D19BBA61477A27441C56BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B9FFC363C77A5BF0308D5CD36A9586 /* Foundation.framework */; };
 		E175C9D82DBFD13265CE1326E83700BC /* ios-util-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B9DCFA8A452E1C4F7122F90BAB0C646 /* ios-util-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -21,6 +20,8 @@
 		E7205E721BEB9A18009EDC6C /* TKSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = E7205E6C1BEB9A18009EDC6C /* TKSwitch.m */; };
 		E740438A1C5A4F3B0006EEDA /* TKDelayedEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = E74043881C5A4F3B0006EEDA /* TKDelayedEvent.h */; };
 		E740438B1C5A4F3B0006EEDA /* TKDelayedEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E74043891C5A4F3B0006EEDA /* TKDelayedEvent.m */; };
+		E7A64EEA1C85E10300024778 /* TKProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7A64EE81C85E10300024778 /* TKProgressView.h */; };
+		E7A64EEB1C85E10300024778 /* TKProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A64EE91C85E10300024778 /* TKProgressView.m */; };
 		E7B4CB1D1BECA7CC00FBF0BB /* TKCircularSliderView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B4CB151BECA7CC00FBF0BB /* TKCircularSliderView.h */; };
 		E7B4CB1E1BECA7CC00FBF0BB /* TKCircularSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B4CB161BECA7CC00FBF0BB /* TKCircularSliderView.m */; };
 		E7B4CB1F1BECA7CC00FBF0BB /* TKGradientBackgroundView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B4CB171BECA7CC00FBF0BB /* TKGradientBackgroundView.h */; };
@@ -79,13 +80,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B54430754AC51F73B490EFA235D29926 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C9A7FCC655A358215EDA0405AD36C180;
-			remoteInfo = "ios-util-ios-util";
-		};
 		E5F65E7B6D6FF923E9B3847D38201B3E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -105,7 +99,6 @@
 		4057C7DCC0313FB9CE327F4C1DF3EBE3 /* Pods-ios-util_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ios-util_Tests-dummy.m"; sourceTree = "<group>"; };
 		4B9DCFA8A452E1C4F7122F90BAB0C646 /* ios-util-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ios-util-umbrella.h"; sourceTree = "<group>"; };
 		4ECAC1F02E2B6A22E5898EA3D080EE14 /* ios-util-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ios-util-Private.xcconfig"; sourceTree = "<group>"; };
-		570290265909B6C3AA226F7B2F35C8C5 /* ios-util.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ios-util.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F52334A80523FAE3F3C1A5A5989D4F8 /* ios-util-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ios-util-prefix.pch"; sourceTree = "<group>"; };
 		71E305E82DB5E6230670FCA69F9D9E9B /* ios_util.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ios_util.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C44CD253FE1E4B98D942ADFC2006331 /* Pods-ios-util_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ios-util_Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -124,6 +117,8 @@
 		E7205E6C1BEB9A18009EDC6C /* TKSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSwitch.m; sourceTree = "<group>"; };
 		E74043881C5A4F3B0006EEDA /* TKDelayedEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDelayedEvent.h; sourceTree = "<group>"; };
 		E74043891C5A4F3B0006EEDA /* TKDelayedEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDelayedEvent.m; sourceTree = "<group>"; };
+		E7A64EE81C85E10300024778 /* TKProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressView.h; sourceTree = "<group>"; };
+		E7A64EE91C85E10300024778 /* TKProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressView.m; sourceTree = "<group>"; };
 		E7B4CB151BECA7CC00FBF0BB /* TKCircularSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKCircularSliderView.h; path = ../Views/TKCircularSliderView.h; sourceTree = "<group>"; };
 		E7B4CB161BECA7CC00FBF0BB /* TKCircularSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKCircularSliderView.m; path = ../Views/TKCircularSliderView.m; sourceTree = "<group>"; };
 		E7B4CB171BECA7CC00FBF0BB /* TKGradientBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGradientBackgroundView.h; sourceTree = "<group>"; };
@@ -166,13 +161,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E0718D35B333026E4724FE2EF993576 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DE720352C7A455A5D623B9422F7C1821 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				130927C38A3826205EE25D62A6828E0D /* Pods_ios_util_Tests.framework */,
-				570290265909B6C3AA226F7B2F35C8C5 /* ios-util.bundle */,
 				71E305E82DB5E6230670FCA69F9D9E9B /* ios_util.framework */,
 			);
 			name = Products;
@@ -345,6 +332,8 @@
 			children = (
 				E7B4CB171BECA7CC00FBF0BB /* TKGradientBackgroundView.h */,
 				E7B4CB181BECA7CC00FBF0BB /* TKGradientBackgroundView.m */,
+				E7A64EE81C85E10300024778 /* TKProgressView.h */,
+				E7A64EE91C85E10300024778 /* TKProgressView.m */,
 				E7B4CB191BECA7CC00FBF0BB /* TKToastView.h */,
 				E7B4CB1A1BECA7CC00FBF0BB /* TKToastView.m */,
 				E7B4CB1B1BECA7CC00FBF0BB /* UIPlaceholderTextView.h */,
@@ -372,6 +361,7 @@
 				E7B4CB271BECA7DD00FBF0BB /* TKScrollViewController.h in Headers */,
 				E7B4CB3B1BECA7E400FBF0BB /* UIView+Recurse.h in Headers */,
 				E7205E6D1BEB9A18009EDC6C /* TKMultiStateButton.h in Headers */,
+				E7A64EEA1C85E10300024778 /* TKProgressView.h in Headers */,
 				E7205E711BEB9A18009EDC6C /* TKSwitch.h in Headers */,
 				E7B4CB331BECA7E400FBF0BB /* NSManagedObject+Distinction.h in Headers */,
 				ECFADEFE963335EF352705A62F6D61A5 /* Pods-ios-util_Tests-umbrella.h in Headers */,
@@ -427,29 +417,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				500A352A557EB8F4F464A15F83A4D7C0 /* PBXTargetDependency */,
 			);
 			name = "ios-util";
 			productName = "ios-util";
 			productReference = 71E305E82DB5E6230670FCA69F9D9E9B /* ios_util.framework */;
 			productType = "com.apple.product-type.framework";
-		};
-		C9A7FCC655A358215EDA0405AD36C180 /* ios-util-ios-util */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E4E0136D66FCF1098506D536D64288B7 /* Build configuration list for PBXNativeTarget "ios-util-ios-util" */;
-			buildPhases = (
-				B3A3BC27873A49A2A7DBC235B780136C /* Sources */,
-				DE720352C7A455A5D623B9422F7C1821 /* Frameworks */,
-				B207FAE15A7F30119254C4ABB166CA87 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "ios-util-ios-util";
-			productName = "ios-util-ios-util";
-			productReference = 570290265909B6C3AA226F7B2F35C8C5 /* ios-util.bundle */;
-			productType = "com.apple.product-type.bundle";
 		};
 		F81AAC1E7CD2342C44E1EFC96D013730 /* Pods-ios-util_Tests */ = {
 			isa = PBXNativeTarget;
@@ -492,21 +464,12 @@
 			targets = (
 				F81AAC1E7CD2342C44E1EFC96D013730 /* Pods-ios-util_Tests */,
 				5D5E73FBB2C2B1812455DD8B08D7A95D /* ios-util */,
-				C9A7FCC655A358215EDA0405AD36C180 /* ios-util-ios-util */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6AACC150CA0FC4FC2028E63197136578 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				75D2A475ED10BF5B6B45AD8E0FD7E47D /* ios-util.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B207FAE15A7F30119254C4ABB166CA87 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -559,26 +522,14 @@
 				E7B4CB1E1BECA7CC00FBF0BB /* TKCircularSliderView.m in Sources */,
 				E7205E701BEB9A18009EDC6C /* TKPickerViewWithFRC.m in Sources */,
 				E7B4CB341BECA7E400FBF0BB /* NSManagedObject+Distinction.m in Sources */,
+				E7A64EEB1C85E10300024778 /* TKProgressView.m in Sources */,
 				E7B4CB201BECA7CC00FBF0BB /* TKGradientBackgroundView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3A3BC27873A49A2A7DBC235B780136C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		500A352A557EB8F4F464A15F83A4D7C0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ios-util-ios-util";
-			target = C9A7FCC655A358215EDA0405AD36C180 /* ios-util-ios-util */;
-			targetProxy = B54430754AC51F73B490EFA235D29926 /* PBXContainerItemProxy */;
-		};
 		9C19E150B6EE7833014C051A1652CD0E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "ios-util";
@@ -661,18 +612,6 @@
 			};
 			name = Debug;
 		};
-		0DD32962535DD3597E506039C5850CCA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4ECAC1F02E2B6A22E5898EA3D080EE14 /* ios-util-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = "ios-util";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		1CCB2873B1B21B950FA45C94A87BDBF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8D58F1CBD7742F0560BBCF0A83F6BDC5 /* Pods-ios-util_Tests.debug.xcconfig */;
@@ -686,7 +625,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-ios-util_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-ios-util_Tests/Pods-ios-util_Tests.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -717,7 +656,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/ios-util/ios-util-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/ios-util/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ios-util/ios-util.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -728,18 +667,6 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		46DDE0BBC6048211DD60803417D1125A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4ECAC1F02E2B6A22E5898EA3D080EE14 /* ios-util-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = "ios-util";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
 		};
@@ -756,7 +683,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-ios-util_Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Pods-ios-util_Tests/Pods-ios-util_Tests.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -787,7 +714,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/ios-util/ios-util-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/ios-util/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ios-util/ios-util.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -827,15 +754,6 @@
 			buildConfigurations = (
 				6417CD2757AB7B7626E87243AD2A9C2A /* Debug */,
 				3907FC08800F51378371B38CE4BB01D7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E4E0136D66FCF1098506D536D64288B7 /* Build configuration list for PBXNativeTarget "ios-util-ios-util" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0DD32962535DD3597E506039C5850CCA /* Debug */,
-				46DDE0BBC6048211DD60803417D1125A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

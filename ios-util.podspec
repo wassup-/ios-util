@@ -7,36 +7,37 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "ios-util"
-  s.version          = "0.1.5"
-  s.summary          = "Utility library for iOS development."
+    # info
+    s.name             = 'ios-util'
+    s.version          = '0.1.6'
+    s.summary          = 'Utility library for iOS development.'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description      = <<-DESC
-                        This utility library contains classes (controllers, views, categories, ...) which may help/speedup iOS application development.
-                       DESC
+    s.description      = 'This utility library contains classes (controllers, views, categories, ...) which may help/speedup iOS application development.'
 
-  s.homepage         = "https://github.com/wassup-/ios-util"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license          = 'MIT'
-  s.author           = { "Tom Knapen" => "tom@knapen.io" }
-  s.source           = { :git => "https://github.com/wassup-/ios-util.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+    s.homepage         = 'https://github.com/wassup-/ios-util'
+    s.author           = {
+        'Tom Knapen' => 'tom@knapen.io'
+    }
+    s.license          = {
+        :type => 'MIT',
+        :file => 'LICENSE.md'
+    }
 
-  s.platform     = :ios, '8.0'
-  s.requires_arc = true
+    # configuration
+    s.platform     = :ios, '8.0'
+    s.requires_arc = true
 
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'ios-util' => ['Pod/Assets/*.png']
-  }
+    s.source           = {
+        :git => 'https://github.com/wassup-/ios-util.git',
+        :tag => s.version.to_s
+    }
+    s.source_files = 'Pod/Classes/**/*'
+    s.resource_bundles = {
+        'ios-util' => ['Pod/Assets/*.png']
+    }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  s.frameworks = 'CoreGraphics', 'Foundation', 'UIKit'
-  s.dependency 'MagicalRecord'
-  s.dependency 'Masonry'
+    # s.public_header_files = 'Pod/Classes/**/*.h'
+    s.frameworks = 'CoreGraphics', 'Foundation', 'UIKit'
+    s.dependency 'MagicalRecord'
+    s.dependency 'Masonry'
 end

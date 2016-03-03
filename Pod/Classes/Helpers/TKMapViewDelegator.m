@@ -45,7 +45,7 @@ __strong typeof(var) var = var ## _weak__
 	@weakify(self);
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		@strongify(self);
-		
+
 		const NSInteger annotationCount = [self.dataSource numberOfAnnotationsForMapView:self.mapView];
 		NSMutableArray<TKAnnotationWrapper *> *annotations = [NSMutableArray arrayWithCapacity:annotationCount];
 		for(NSInteger i = 0; i < annotationCount; ++i) {
@@ -58,7 +58,7 @@ __strong typeof(var) var = var ## _weak__
 												 atIndexPath: indexPath
 													withData: data]];
 		}
-		
+
 		dispatch_async(dispatch_get_main_queue(), ^{
 			@strongify(self);
 			[self configureWithAnnotations:annotations];
@@ -75,21 +75,21 @@ __strong typeof(var) var = var ## _weak__
 	id<MKAnnotation> anno = annotation;
 	id identifier = nil;
 	MKAnnotationView *reuseView = nil;
-	
+
 	if(![annotation isKindOfClass:MKUserLocation.class]) {
 		indexPath = [self.class indexPathOf:annotation];
 		data = [self.class dataOf:annotation];
 		anno = [self.class annotationOf:annotation];
-		
+
 		identifier = [self.dataSource mapView: mapView
 				  classOrIdentifierForAnnotation: anno
 									 atIndexPath: indexPath
 										withData: data];
-		
+
 		reuseView = ([identifier isKindOfClass:NSString.class]) ? [mapView dequeueReusableAnnotationViewWithIdentifier:identifier] : nil;
-		
+
 	}
-	
+
 	MKAnnotationView *view = [self.dataSource mapView: mapView
 									viewForAnnotation: anno
 										  atIndexPath: indexPath
@@ -100,8 +100,61 @@ __strong typeof(var) var = var ## _weak__
 			   forAnnotation: anno
 				 atIndexPath: indexPath
 					withData: data];
-	
+
 	return view;
+}
+
+
+-(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+	id<MKAnnotation> annotation = view.annotation;
+
+	NSIndexPath *indexPath = [self.class indexPathOf:annotation];
+	id data = [self.class dataOf:annotation];
+	id<MKAnnotation> anno = [self.class annotationOf:annotation];
+
+	if([self mapView:mapView shouldSelectAnnotation:anno atIndexPath:indexPath withData:data]) {
+		[self mapView:mapView didSelectAnnotation:anno atIndexPath:indexPath withData:data];
+	}
+}
+
+-(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+	id<MKAnnotation> annotation = view.annotation;
+
+	NSIndexPath *indexPath = [self.class indexPathOf:annotation];
+	id data = [self.class dataOf:annotation];
+	id<MKAnnotation> anno = [self.class annotationOf:annotation];
+
+	if([self mapView:mapView shouldDeselectAnnotation:anno atIndexPath:indexPath withData:data]) {
+		[self mapView:mapView didDeselectAnnotation:anno atIndexPath:indexPath withData:data];
+	}
+}
+
+#pragma mark - Passthrough
+
+-(BOOL)mapView:(MKMapView *)mapView shouldSelectAnnotation:(id<MKAnnotation>)annotation atIndexPath:(NSIndexPath *)indexPath withData:(id)data {
+	if([self.delegate respondsToSelector:@selector(mapView:shouldSelectAnnotation:atIndexPath:withData:)]) {
+		return [self.delegate mapView:mapView shouldSelectAnnotation:annotation atIndexPath:indexPath withData:data];
+	}
+	return YES;
+}
+
+-(BOOL)mapView:(MKMapView *)mapView shouldDeselectAnnotation:(id<MKAnnotation>)annotation atIndexPath:(NSIndexPath *)indexPath withData:(id)data {
+	if([self.delegate respondsToSelector:@selector(mapView:shouldDeselectAnnotation:atIndexPath:withData:)]) {
+		return [self.delegate mapView:mapView shouldDeselectAnnotation:annotation atIndexPath:indexPath withData:data];
+	}
+	return YES;
+}
+
+-(void)mapView:(MKMapView *)mapView didSelectAnnotation:(id<MKAnnotation>)annotation atIndexPath:(NSIndexPath *)indexPath withData:(id)data {
+	if([self.delegate respondsToSelector:@selector(mapView:didSelectAnnotation:atIndexPath:withData:)]) {
+		[self.delegate mapView:mapView didSelectAnnotation:annotation atIndexPath:indexPath withData:data];
+	}
+}
+
+-(void)mapView:(MKMapView *)mapView didDeselectAnnotation:(id<MKAnnotation>)annotation atIndexPath:(NSIndexPath *)indexPath withData:(id)data {
+	if([self.delegate respondsToSelector:@selector(mapView:didDeselectAnnotation:atIndexPath:withData:)]) {
+		[self.delegate mapView:mapView didDeselectAnnotation:annotation atIndexPath:indexPath withData:data];
+	}
 }
 
 #pragma mark - Helpers

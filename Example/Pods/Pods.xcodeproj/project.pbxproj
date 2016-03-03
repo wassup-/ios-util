@@ -12,6 +12,18 @@
 		93864C9227104722A4FC8CA6CB63DEAA /* Pods-ios-util_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4057C7DCC0313FB9CE327F4C1DF3EBE3 /* Pods-ios-util_Tests-dummy.m */; };
 		9CFF145A44D19BBA61477A27441C56BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B9FFC363C77A5BF0308D5CD36A9586 /* Foundation.framework */; };
 		E175C9D82DBFD13265CE1326E83700BC /* ios-util-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B9DCFA8A452E1C4F7122F90BAB0C646 /* ios-util-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E71B69A11C883E3F0071E206 /* MKMapView+Separation.h in Headers */ = {isa = PBXBuildFile; fileRef = E71B69991C883E3F0071E206 /* MKMapView+Separation.h */; };
+		E71B69A21C883E3F0071E206 /* MKMapView+Separation.m in Sources */ = {isa = PBXBuildFile; fileRef = E71B699A1C883E3F0071E206 /* MKMapView+Separation.m */; };
+		E71B69A31C883E3F0071E206 /* TKAnnotationWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = E71B699B1C883E3F0071E206 /* TKAnnotationWrapper.h */; };
+		E71B69A41C883E3F0071E206 /* TKAnnotationWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E71B699C1C883E3F0071E206 /* TKAnnotationWrapper.m */; };
+		E71B69A51C883E3F0071E206 /* TKMapViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = E71B699D1C883E3F0071E206 /* TKMapViewDataSource.h */; };
+		E71B69A61C883E3F0071E206 /* TKMapViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E71B699E1C883E3F0071E206 /* TKMapViewDelegate.h */; };
+		E71B69A71C883E3F0071E206 /* TKMapViewDelegator.h in Headers */ = {isa = PBXBuildFile; fileRef = E71B699F1C883E3F0071E206 /* TKMapViewDelegator.h */; };
+		E71B69A81C883E3F0071E206 /* TKMapViewDelegator.m in Sources */ = {isa = PBXBuildFile; fileRef = E71B69A01C883E3F0071E206 /* TKMapViewDelegator.m */; };
+		E71B69AB1C883E530071E206 /* UIStoryboardSegue+ViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E71B69A91C883E530071E206 /* UIStoryboardSegue+ViewController.h */; };
+		E71B69AC1C883E530071E206 /* UIStoryboardSegue+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E71B69AA1C883E530071E206 /* UIStoryboardSegue+ViewController.m */; };
+		E71B69AF1C88407F0071E206 /* TKMultiDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = E71B69AD1C88407F0071E206 /* TKMultiDelegate.h */; };
+		E71B69B01C88407F0071E206 /* TKMultiDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E71B69AE1C88407F0071E206 /* TKMultiDelegate.m */; };
 		E7205E6D1BEB9A18009EDC6C /* TKMultiStateButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E7205E671BEB9A18009EDC6C /* TKMultiStateButton.h */; };
 		E7205E6E1BEB9A18009EDC6C /* TKMultiStateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E7205E681BEB9A18009EDC6C /* TKMultiStateButton.m */; };
 		E7205E6F1BEB9A18009EDC6C /* TKPickerViewWithFRC.h in Headers */ = {isa = PBXBuildFile; fileRef = E7205E691BEB9A18009EDC6C /* TKPickerViewWithFRC.h */; };
@@ -109,6 +121,18 @@
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C79E6AF8E2793936D8A200A30FB3C619 /* Pods-ios-util_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ios-util_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D098FABB6A5A8F57368EF01FA0125970 /* Pods-ios-util_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ios-util_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		E71B69991C883E3F0071E206 /* MKMapView+Separation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapView+Separation.h"; path = "../Helpers/MKMapView+Separation.h"; sourceTree = "<group>"; };
+		E71B699A1C883E3F0071E206 /* MKMapView+Separation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+Separation.m"; path = "../Helpers/MKMapView+Separation.m"; sourceTree = "<group>"; };
+		E71B699B1C883E3F0071E206 /* TKAnnotationWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAnnotationWrapper.h; sourceTree = "<group>"; };
+		E71B699C1C883E3F0071E206 /* TKAnnotationWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAnnotationWrapper.m; sourceTree = "<group>"; };
+		E71B699D1C883E3F0071E206 /* TKMapViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapViewDataSource.h; sourceTree = "<group>"; };
+		E71B699E1C883E3F0071E206 /* TKMapViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapViewDelegate.h; sourceTree = "<group>"; };
+		E71B699F1C883E3F0071E206 /* TKMapViewDelegator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapViewDelegator.h; sourceTree = "<group>"; };
+		E71B69A01C883E3F0071E206 /* TKMapViewDelegator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMapViewDelegator.m; sourceTree = "<group>"; };
+		E71B69A91C883E530071E206 /* UIStoryboardSegue+ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIStoryboardSegue+ViewController.h"; sourceTree = "<group>"; };
+		E71B69AA1C883E530071E206 /* UIStoryboardSegue+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIStoryboardSegue+ViewController.m"; sourceTree = "<group>"; };
+		E71B69AD1C88407F0071E206 /* TKMultiDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMultiDelegate.h; sourceTree = "<group>"; };
+		E71B69AE1C88407F0071E206 /* TKMultiDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMultiDelegate.m; sourceTree = "<group>"; };
 		E7205E671BEB9A18009EDC6C /* TKMultiStateButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMultiStateButton.h; sourceTree = "<group>"; };
 		E7205E681BEB9A18009EDC6C /* TKMultiStateButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMultiStateButton.m; sourceTree = "<group>"; };
 		E7205E691BEB9A18009EDC6C /* TKPickerViewWithFRC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKPickerViewWithFRC.h; sourceTree = "<group>"; };
@@ -300,20 +324,24 @@
 		E7B4CB101BECA76C00FBF0BB /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				E71B69991C883E3F0071E206 /* MKMapView+Separation.h */,
+				E71B699A1C883E3F0071E206 /* MKMapView+Separation.m */,
 				E7B4CB291BECA7E400FBF0BB /* NSManagedObject+Distinction.h */,
 				E7B4CB2A1BECA7E400FBF0BB /* NSManagedObject+Distinction.m */,
+				E7B4CB571BECA83900FBF0BB /* NSNotificationCenter+Shared.h */,
+				E7B4CB581BECA83900FBF0BB /* NSNotificationCenter+Shared.m */,
 				E7B4CB2B1BECA7E400FBF0BB /* NSPredicate+Combine.h */,
 				E7B4CB2C1BECA7E400FBF0BB /* NSPredicate+Combine.m */,
+				E7B4CB5B1BECA88900FBF0BB /* NSUserDefaults+Shared.h */,
+				E7B4CB5C1BECA88900FBF0BB /* NSUserDefaults+Shared.m */,
 				E7B4CB2D1BECA7E400FBF0BB /* UIAlertController+Static.h */,
 				E7B4CB2E1BECA7E400FBF0BB /* UIAlertController+Static.m */,
 				E7B4CB2F1BECA7E400FBF0BB /* UIImage+Util.h */,
 				E7B4CB301BECA7E400FBF0BB /* UIImage+Util.m */,
+				E71B69A91C883E530071E206 /* UIStoryboardSegue+ViewController.h */,
+				E71B69AA1C883E530071E206 /* UIStoryboardSegue+ViewController.m */,
 				E7B4CB311BECA7E400FBF0BB /* UIView+Recurse.h */,
 				E7B4CB321BECA7E400FBF0BB /* UIView+Recurse.m */,
-				E7B4CB571BECA83900FBF0BB /* NSNotificationCenter+Shared.h */,
-				E7B4CB581BECA83900FBF0BB /* NSNotificationCenter+Shared.m */,
-				E7B4CB5B1BECA88900FBF0BB /* NSUserDefaults+Shared.h */,
-				E7B4CB5C1BECA88900FBF0BB /* NSUserDefaults+Shared.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -321,8 +349,16 @@
 		E7B4CB121BECA77700FBF0BB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E71B699B1C883E3F0071E206 /* TKAnnotationWrapper.h */,
+				E71B699C1C883E3F0071E206 /* TKAnnotationWrapper.m */,
 				E74043881C5A4F3B0006EEDA /* TKDelayedEvent.h */,
 				E74043891C5A4F3B0006EEDA /* TKDelayedEvent.m */,
+				E71B699D1C883E3F0071E206 /* TKMapViewDataSource.h */,
+				E71B699E1C883E3F0071E206 /* TKMapViewDelegate.h */,
+				E71B699F1C883E3F0071E206 /* TKMapViewDelegator.h */,
+				E71B69A01C883E3F0071E206 /* TKMapViewDelegator.m */,
+				E71B69AD1C88407F0071E206 /* TKMultiDelegate.h */,
+				E71B69AE1C88407F0071E206 /* TKMultiDelegate.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -360,21 +396,28 @@
 			files = (
 				E7B4CB271BECA7DD00FBF0BB /* TKScrollViewController.h in Headers */,
 				E7B4CB3B1BECA7E400FBF0BB /* UIView+Recurse.h in Headers */,
+				E71B69AB1C883E530071E206 /* UIStoryboardSegue+ViewController.h in Headers */,
 				E7205E6D1BEB9A18009EDC6C /* TKMultiStateButton.h in Headers */,
 				E7A64EEA1C85E10300024778 /* TKProgressView.h in Headers */,
+				E71B69A61C883E3F0071E206 /* TKMapViewDelegate.h in Headers */,
 				E7205E711BEB9A18009EDC6C /* TKSwitch.h in Headers */,
+				E71B69A51C883E3F0071E206 /* TKMapViewDataSource.h in Headers */,
 				E7B4CB331BECA7E400FBF0BB /* NSManagedObject+Distinction.h in Headers */,
+				E71B69A31C883E3F0071E206 /* TKAnnotationWrapper.h in Headers */,
 				ECFADEFE963335EF352705A62F6D61A5 /* Pods-ios-util_Tests-umbrella.h in Headers */,
 				E7B4CB591BECA83900FBF0BB /* NSNotificationCenter+Shared.h in Headers */,
 				E7B4CB371BECA7E400FBF0BB /* UIAlertController+Static.h in Headers */,
+				E71B69AF1C88407F0071E206 /* TKMultiDelegate.h in Headers */,
 				E7B4CB1D1BECA7CC00FBF0BB /* TKCircularSliderView.h in Headers */,
 				E7B4CB1F1BECA7CC00FBF0BB /* TKGradientBackgroundView.h in Headers */,
 				E740438A1C5A4F3B0006EEDA /* TKDelayedEvent.h in Headers */,
 				E7B4CB391BECA7E400FBF0BB /* UIImage+Util.h in Headers */,
+				E71B69A11C883E3F0071E206 /* MKMapView+Separation.h in Headers */,
 				E7205E6F1BEB9A18009EDC6C /* TKPickerViewWithFRC.h in Headers */,
 				E7B4CB351BECA7E400FBF0BB /* NSPredicate+Combine.h in Headers */,
 				E7B4CB231BECA7CC00FBF0BB /* UIPlaceholderTextView.h in Headers */,
 				E7B4CB5D1BECA88900FBF0BB /* NSUserDefaults+Shared.h in Headers */,
+				E71B69A71C883E3F0071E206 /* TKMapViewDelegator.h in Headers */,
 				E7B4CB211BECA7CC00FBF0BB /* TKToastView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +552,7 @@
 				E7B4CB221BECA7CC00FBF0BB /* TKToastView.m in Sources */,
 				E7B4CB361BECA7E400FBF0BB /* NSPredicate+Combine.m in Sources */,
 				E7B4CB3C1BECA7E400FBF0BB /* UIView+Recurse.m in Sources */,
+				E71B69A21C883E3F0071E206 /* MKMapView+Separation.m in Sources */,
 				E740438B1C5A4F3B0006EEDA /* TKDelayedEvent.m in Sources */,
 				E7B4CB5E1BECA88900FBF0BB /* NSUserDefaults+Shared.m in Sources */,
 				E7B4CB281BECA7DD00FBF0BB /* TKScrollViewController.m in Sources */,
@@ -516,14 +560,18 @@
 				E7205E6E1BEB9A18009EDC6C /* TKMultiStateButton.m in Sources */,
 				E7B4CB5A1BECA83900FBF0BB /* NSNotificationCenter+Shared.m in Sources */,
 				E7B4CB241BECA7CC00FBF0BB /* UIPlaceholderTextView.m in Sources */,
+				E71B69A41C883E3F0071E206 /* TKAnnotationWrapper.m in Sources */,
 				E7B4CB381BECA7E400FBF0BB /* UIAlertController+Static.m in Sources */,
 				E7B4CB3A1BECA7E400FBF0BB /* UIImage+Util.m in Sources */,
 				E7205E721BEB9A18009EDC6C /* TKSwitch.m in Sources */,
 				E7B4CB1E1BECA7CC00FBF0BB /* TKCircularSliderView.m in Sources */,
+				E71B69A81C883E3F0071E206 /* TKMapViewDelegator.m in Sources */,
 				E7205E701BEB9A18009EDC6C /* TKPickerViewWithFRC.m in Sources */,
 				E7B4CB341BECA7E400FBF0BB /* NSManagedObject+Distinction.m in Sources */,
 				E7A64EEB1C85E10300024778 /* TKProgressView.m in Sources */,
 				E7B4CB201BECA7CC00FBF0BB /* TKGradientBackgroundView.m in Sources */,
+				E71B69B01C88407F0071E206 /* TKMultiDelegate.m in Sources */,
+				E71B69AC1C883E530071E206 /* UIStoryboardSegue+ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

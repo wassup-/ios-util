@@ -52,28 +52,20 @@ __strong typeof(var) var = var ## _weak__
 }
 
 -(void)reloadData {
-	@weakify(self);
-	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		@strongify(self);
+	const NSInteger annotationCount = [self.dataSource numberOfAnnotationsForMapView:self.mapView];
+	NSMutableArray<TKAnnotationWrapper *> *annotations = [NSMutableArray arrayWithCapacity:annotationCount];
+	for(NSInteger i = 0; i < annotationCount; ++i) {
+		NSIndexPath *indexPath = [NSIndexPath indexPathWithIndex:i];
+		id data = [self.dataSource mapView:self.mapView dataForAnnotationAtIndexPath:indexPath];
+		id<MKAnnotation> original = [self.dataSource mapView: self.mapView
+									   annotationAtIndexPath: indexPath
+													withData: data];
+		[annotations addObject:[TKAnnotationWrapper wrap: original
+											 atIndexPath: indexPath
+												withData: data]];
+	}
 
-		const NSInteger annotationCount = [self.dataSource numberOfAnnotationsForMapView:self.mapView];
-		NSMutableArray<TKAnnotationWrapper *> *annotations = [NSMutableArray arrayWithCapacity:annotationCount];
-		for(NSInteger i = 0; i < annotationCount; ++i) {
-			NSIndexPath *indexPath = [NSIndexPath indexPathWithIndex:i];
-			id data = [self.dataSource mapView:self.mapView dataForAnnotationAtIndexPath:indexPath];
-			id<MKAnnotation> original = [self.dataSource mapView: self.mapView
-										   annotationAtIndexPath: indexPath
-														withData: data];
-			[annotations addObject:[TKAnnotationWrapper wrap: original
-												 atIndexPath: indexPath
-													withData: data]];
-		}
-
-		dispatch_async(dispatch_get_main_queue(), ^{
-			@strongify(self);
-			[self configureWithAnnotations:annotations];
-		});
-	});
+	[self configureWithAnnotations:annotations];
 }
 
 #pragma mark - Properties

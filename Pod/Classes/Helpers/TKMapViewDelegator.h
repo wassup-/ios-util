@@ -15,6 +15,7 @@
 
 @property (nonatomic, weak) MKMapView *mapView;
 
+@property (nonatomic, weak) id<MKMapViewDelegate> passthroughDelegate;
 @property (nonatomic, weak) id<TKMapViewDelegate> delegate;
 @property (nonatomic, weak) id<TKMapViewDataSource> dataSource;
 

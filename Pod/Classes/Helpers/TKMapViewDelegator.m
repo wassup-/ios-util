@@ -9,6 +9,8 @@
 #import "TKMapViewDelegator.h"
 #import "TKAnnotationWrapper.h"
 
+@import LBDelegateMatrioska;
+
 #ifndef weakify
 
 #define weakify(var) \
@@ -25,12 +27,20 @@ __strong typeof(var) var = var ## _weak__
 
 #endif
 
+@interface TKMapViewDelegator ()
+
+@property (nonatomic, strong) LBDelegateMatrioska *delegateProxy;
+
+@end
+
 @implementation TKMapViewDelegator
+
+#pragma mark - Creators
 
 +(instancetype)delegatorForMapView:(MKMapView *)mapView {
 	TKMapViewDelegator *instance = [self new];
 	instance.mapView = mapView;
-	mapView.delegate = instance;
+	mapView.delegate = instance.delegateProxy;
 	return instance;
 }
 
@@ -64,6 +74,27 @@ __strong typeof(var) var = var ## _weak__
 			[self configureWithAnnotations:annotations];
 		});
 	});
+}
+
+#pragma mark - Properties
+
+-(LBDelegateMatrioska *)delegateProxy {
+	if(!_delegateProxy) {
+		_delegateProxy = [[LBDelegateMatrioska alloc] initWithDelegates:@[self]];
+	}
+	return _delegateProxy;
+}
+
+-(void)setPassthroughDelegate:(id<MKMapViewDelegate>)passthroughDelegate {
+	if(_passthroughDelegate) {
+		[self.delegateProxy removeDelegate:_passthroughDelegate];
+	}
+
+	_passthroughDelegate = passthroughDelegate;
+
+	if(_passthroughDelegate) {
+		[self.delegateProxy addDelegate:_passthroughDelegate];
+	}
 }
 
 #pragma mark - MKMapViewDelegate

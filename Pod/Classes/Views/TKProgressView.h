@@ -22,6 +22,16 @@
 
 @end
 
+@interface TKStatusProgress : TKProgress
+
++(id<TKProgressInterface>)showOnView:(UIView *)view withSuccess:(NSString *)success;
++(id<TKProgressInterface>)showOnView:(UIView *)view withError:(NSString *)error;
+
++(id<TKProgressInterface>)showOnView:(UIView *)view withSuccess:(NSString *)success hideDelay:(NSTimeInterval)hideDelay;
++(id<TKProgressInterface>)showOnView:(UIView *)view withError:(NSString *)error hideDelay:(NSTimeInterval)hideDelay;
+
+@end
+
 @interface TKDeterminateProgress : TKProgress
 
 +(id<TKProgressInterface>)showOnView:(UIView *)view withProgress:(CGFloat)progress;

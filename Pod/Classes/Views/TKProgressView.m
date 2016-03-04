@@ -159,7 +159,7 @@ typedef void(^TKProgressOperationBlock)(id<TKProgressInterface> impl);
 		containerView.layer.shadowOffset = CGSizeMake(2, 2);
 		containerView.layer.shadowRadius = 5;
 		containerView.layer.shadowOpacity = .6;
-		
+
 		_contentView = [UIView new];
 		_contentView.backgroundColor = UIColor.whiteColor;
 		_contentView.layer.cornerRadius = 5;
@@ -182,7 +182,7 @@ typedef void(^TKProgressOperationBlock)(id<TKProgressInterface> impl);
 
 -(void)didMoveToSuperview {
 	[super didMoveToSuperview];
-	
+
 	self.frame = self.superview.bounds;
 	self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
@@ -197,6 +197,127 @@ typedef void(^TKProgressOperationBlock)(id<TKProgressInterface> impl);
 	[UIView animateWithDuration:kAnimationDuration animations:^{
 		[self.contentView.superview layoutIfNeeded];
 	}];
+}
+
+@end
+
+
+
+@interface TKStatusProgress () <TKProgressInterface>
+
+@property (nonatomic, strong) id<TKProgressInterface> inner;
+@property (nonatomic, readonly) UILabel *statusLabel;
+
+@end
+
+@implementation TKStatusProgress
+@synthesize statusLabel = _statusLabel;
+
+#pragma mark - TKProgressInterface
+
++(id<TKProgressInterface>)wrap:(id<TKProgressInterface>)impl {
+	TKStatusProgress *instance = nil;
+	if(![impl isKindOfClass:self]) {
+		instance = [self new];
+		instance.inner = [impl unwrap];
+
+		for(UIView *subview in instance.contentView.subviews) {
+			[subview removeFromSuperview];
+		}
+	} else {
+		instance = (TKStatusProgress *)impl;
+	}
+	return instance;
+}
+
+-(id<TKProgressInterface>)unwrap {
+	return [self.inner unwrap];
+}
+
+-(void)queueOperation:(TKProgressOperationBlock)block withPriority:(NSOperationQueuePriority)priority onView:(UIView *)view {
+	[self.unwrap queueOperation: block
+				   withPriority: priority
+						 onView: view];
+}
+
+-(UIView *)view {
+	return [self.unwrap view];
+}
+
+-(UIView *)contentView {
+	return [self.unwrap contentView];
+}
+
+-(void)hide {
+	[self.unwrap hide];
+}
+
+#pragma mark -
+
++(id<TKProgressInterface>)showOnView:(UIView *)view withSuccess:(NSString *)success {
+	id<TKProgressInterface> impl = view.tkProgressImpl;
+	[impl queueOperation:^(id<TKProgressInterface> impl) {
+		TKStatusProgress *instance = (TKStatusProgress *)[self wrap:impl];
+		[view setTkProgressImpl:instance];
+		[instance beginVisualUpdates];
+		instance.statusLabel.textColor = UIColor.greenColor;
+		instance.statusLabel.text = success;
+		[view addSubview:instance.view];
+		[instance endVisualUpdates];
+	} withPriority:NSOperationQueuePriorityNormal onView: view];
+	return impl;
+}
+
++(id<TKProgressInterface>)showOnView:(UIView *)view withSuccess:(NSString *)success hideDelay:(NSTimeInterval)hideDelay {
+	id<TKProgressInterface> impl = [self showOnView:view withSuccess:success];
+	[impl queueOperation:^(id<TKProgressInterface> impl) {
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(hideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[impl hide];
+		});
+	} withPriority:NSOperationQueuePriorityNormal onView:view];
+	return impl;
+}
+
++(id<TKProgressInterface>)showOnView:(UIView *)view withError:(NSString *)error {
+	id<TKProgressInterface> impl = view.tkProgressImpl;
+	[impl queueOperation:^(id<TKProgressInterface> impl) {
+		TKStatusProgress *instance = (TKStatusProgress *)[self wrap:impl];
+		[view setTkProgressImpl:instance];
+		[instance beginVisualUpdates];
+		instance.statusLabel.textColor = UIColor.redColor;
+		instance.statusLabel.text = error;
+		[view addSubview:instance.view];
+		[instance endVisualUpdates];
+	} withPriority:NSOperationQueuePriorityNormal onView: view];
+	return impl;
+}
+
++(id<TKProgressInterface>)showOnView:(UIView *)view withError:(NSString *)error hideDelay:(NSTimeInterval)hideDelay {
+	id<TKProgressInterface> impl = [self showOnView:view withError:error];
+	[impl queueOperation:^(id<TKProgressInterface> impl) {
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(hideDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			[impl hide];
+		});
+	} withPriority:NSOperationQueuePriorityNormal onView:view];
+	return impl;
+}
+
+#pragma mark - Properties
+
+-(UILabel *)statusLabel {
+	if(!_statusLabel) {
+		_statusLabel = [UILabel new];
+		_statusLabel.textAlignment = NSTextAlignmentCenter;
+		_statusLabel.numberOfLines = 2;
+		[self.contentView addSubview:_statusLabel];
+		[_statusLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+			make.leading.equalTo(_statusLabel.superview.mas_leading).with.offset(16);
+			make.trailing.equalTo(_statusLabel.superview.mas_trailing).with.offset(-16);
+			make.top.equalTo(_statusLabel.superview.mas_top).with.offset(16);
+			make.bottom.equalTo(_statusLabel.superview.mas_bottom).with.offset(-16);
+		}];
+	}
+	return _statusLabel;
 }
 
 @end
@@ -332,7 +453,7 @@ typedef void(^TKProgressOperationBlock)(id<TKProgressInterface> impl);
 	if(![impl isKindOfClass:self]) {
 		instance = [self new];
 		instance.inner = [impl unwrap];
-		
+
 		for(UIView *subview in instance.contentView.subviews) {
 			[subview removeFromSuperview];
 		}
@@ -364,7 +485,7 @@ typedef void(^TKProgressOperationBlock)(id<TKProgressInterface> impl);
 	[self.unwrap hide];
 }
 
-#pragma mark - 
+#pragma mark -
 
 +(id<TKProgressInterface>)showOnView:(UIView *)view {
 	return [self showOnView: view

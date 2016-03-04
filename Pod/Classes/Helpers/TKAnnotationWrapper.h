@@ -17,3 +17,10 @@
 -(id<MKAnnotation>)unwrap;
 
 @end
+
+
+@interface MKMapView (TKAnnotationWrapper)
+
+-(TKAnnotationWrapper *)annotationAtIndexPath:(NSIndexPath *)indexPath;
+
+@end

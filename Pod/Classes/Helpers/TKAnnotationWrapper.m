@@ -49,3 +49,17 @@
 }
 
 @end
+
+
+@implementation MKMapView (TKAnnotationWrapper)
+
+-(TKAnnotationWrapper *)annotationAtIndexPath:(NSIndexPath *)indexPath {
+	for(id<MKAnnotation> annotation in self.annotations) {
+		if(![annotation isKindOfClass:TKAnnotationWrapper.class]) continue;
+		TKAnnotationWrapper *wrapper = (TKAnnotationWrapper *)annotation;
+		if(wrapper.indexPath == indexPath) return wrapper;
+	}
+	return nil;
+}
+
+@end

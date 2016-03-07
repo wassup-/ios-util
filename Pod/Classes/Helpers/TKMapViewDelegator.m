@@ -105,12 +105,11 @@ __strong typeof(var) var = var ## _weak__
 		anno = [self.class annotationOf:annotation];
 
 		identifier = [self.dataSource mapView: mapView
-				  classOrIdentifierForAnnotation: anno
-									 atIndexPath: indexPath
-										withData: data];
+			   classOrIdentifierForAnnotation: anno
+								  atIndexPath: indexPath
+									 withData: data];
 
 		reuseView = ([identifier isKindOfClass:NSString.class]) ? [mapView dequeueReusableAnnotationViewWithIdentifier:identifier] : nil;
-
 	}
 
 	MKAnnotationView *view = [self.dataSource mapView: mapView
@@ -129,8 +128,10 @@ __strong typeof(var) var = var ## _weak__
 
 
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
+	NSParameterAssert(view);
 	id<MKAnnotation> annotation = view.annotation;
-
+	NSAssert([annotation isKindOfClass:TKAnnotationWrapper.class], @"Unexpected annotation type");
+	
 	NSIndexPath *indexPath = [self.class indexPathOf:annotation];
 	id data = [self.class dataOf:annotation];
 	id<MKAnnotation> anno = [self.class annotationOf:annotation];
@@ -141,7 +142,9 @@ __strong typeof(var) var = var ## _weak__
 }
 
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
+	NSParameterAssert(view);
 	id<MKAnnotation> annotation = view.annotation;
+	NSAssert([annotation isKindOfClass:TKAnnotationWrapper.class], @"Unexpected annotation type");
 
 	NSIndexPath *indexPath = [self.class indexPathOf:annotation];
 	id data = [self.class dataOf:annotation];
@@ -192,6 +195,32 @@ __strong typeof(var) var = var ## _weak__
 
 +(id<MKAnnotation>)annotationOf:(TKAnnotationWrapper *)annotation {
 	return annotation.unwrap;
+}
+
+@end
+
+@implementation MKMapView (TKDelegate)
+
+-(void)selectAnnotation:(id<MKAnnotation>)annotation atIndexPath:(NSIndexPath *)indexPath withData:(id)data animated:(BOOL)animated {
+	TKAnnotationWrapper *wrapper = nil;
+	if(![annotation isKindOfClass:TKAnnotationWrapper.class]) {
+		wrapper = [self annotationAtIndexPath:indexPath];
+	} else {
+		wrapper = annotation;
+	}
+	
+	[self selectAnnotation:wrapper animated:animated];
+}
+
+-(void)deselectAnnotation:(id<MKAnnotation>)annotation atIndexPath:(NSIndexPath *)indexPath withData:(id)data animated:(BOOL)animated {
+	TKAnnotationWrapper *wrapper = nil;
+	if(![annotation isKindOfClass:TKAnnotationWrapper.class]) {
+		wrapper = [self annotationAtIndexPath:indexPath];
+	} else {
+		wrapper = annotation;
+	}
+	
+	[self deselectAnnotation:wrapper animated:animated];
 }
 
 @end

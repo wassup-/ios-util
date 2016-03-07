@@ -15,4 +15,12 @@
 
 @end
 
+
+@interface MKMapView (TKDelegate)
+
+-(void)selectAnnotation:(id<MKAnnotation>)annotation atIndexPath:(NSIndexPath *)indexPath withData:(id)data animated:(BOOL)animated;
+-(void)deselectAnnotation:(id<MKAnnotation>)annotation atIndexPath:(NSIndexPath *)indexPath withData:(id)data animated:(BOOL)animated;
+
+@end
+
 #endif // TKMapViewDelegate_

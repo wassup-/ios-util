@@ -8,7 +8,7 @@
 
 #import "TKCircularSliderView.h"
 
-#import <Masonry/Masonry.h>
+@import Masonry;
 
 #pragma mark - Structs
 
@@ -77,33 +77,33 @@ BOOL isVectorInSection(CGVector vector, Section section) {
 
 -(void)awakeFromNib {
 	[super awakeFromNib];
-	
+
 	_sliderView = ({
 		UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.sliderRadius, self.sliderRadius)];
 		view.backgroundColor = self.backgroundColor;
 		view.layer.cornerRadius = (self.sliderRadius / 2.);
 		view;
 	});
-	
+
 	{
 		CAShapeLayer *borderLayer = CAShapeLayer.layer;
 		borderLayer.strokeColor = self.backgroundColor.CGColor;
 		borderLayer.fillColor = UIColor.clearColor.CGColor;
 		borderLayer.lineWidth = 2.;
 		borderLayer.lineDashPattern = @[@4, @2];
-		
+
 		CGRect rect = self.layer.bounds;
 		borderLayer.path = [UIBezierPath bezierPathWithOvalInRect:rect].CGPath;
-		
+
 		[self.layer addSublayer:borderLayer];
 	}
-	
+
 	self.backgroundColor = UIColor.clearColor;
 	self.layer.cornerRadius = (self.frame.size.width / 2.);
-	
+
 	[self addSubview:_sliderView];
 	[self bringSubviewToFront:_sliderView];
-	
+
 	[_sliderView mas_updateConstraints:^(MASConstraintMaker *make) {
 		// Size
 		make.width.mas_equalTo(self.sliderRadius);
@@ -112,9 +112,9 @@ BOOL isVectorInSection(CGVector vector, Section section) {
 		make.centerX.equalTo(self.mas_centerX);
 		make.centerY.equalTo(self.mas_centerY);
 	}];
-	
+
 	self.sliderOffset = CGPointMake(self.frame.size.width / 2., self.frame.size.height / 2.);
-	
+
 	self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
 	[self addGestureRecognizer:self.tapGesture];
 }
@@ -134,9 +134,9 @@ BOOL isVectorInSection(CGVector vector, Section section) {
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 	if(!self.isDragging)
 		return;
-	
+
 	UITouch *const touch = touches.anyObject;
-	
+
 	if(![touch.view isEqual:self.sliderView])
 		return;
 
@@ -145,10 +145,10 @@ BOOL isVectorInSection(CGVector vector, Section section) {
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *const touch = touches.anyObject;
-	
+
 	if(![touch.view isEqual:self.sliderView])
 		return;
-	
+
 	self.isDragging = NO;
 }
 
@@ -157,7 +157,7 @@ BOOL isVectorInSection(CGVector vector, Section section) {
 -(void)tap:(UITapGestureRecognizer*)gesture {
 	if(![gesture.view isEqual:self])
 		return;
-	
+
 	[self updateValueBasedOnPosition:[gesture locationInView:self]];
 }
 
@@ -211,12 +211,12 @@ BOOL isVectorInSection(CGVector vector, Section section) {
 		} else if(diff > 0) {
 			[self valueIncrement:diff];
 		}
-		
+
 		State newState = { self.minimumValue, self.maximumValue, currentValue };
 		self.state = newState;
-		
+
 		[self setNeedsLayout];
-		
+
 		[self valueChanged:self.currentValue];
 	}
 }
@@ -293,33 +293,33 @@ BOOL isVectorInSection(CGVector vector, Section section) {
 
 -(NSInteger)indexOfVector:(CGVector)vector inQuadrant:(Quadrant)quadrant sections:(NSInteger)sections {
 	const CGFloat kSectionSize = (1. / sections);
-	
+
 	for(NSInteger i = 0; i < sections; ++i) {
 		const CGVector center = [self.class incrementTowardsEnd:quadrant.start increment:CGVectorMake(i * kSectionSize, i * kSectionSize) end:quadrant.end];
 		const Section section = { center, kSectionSize};
 		if(isVectorInSection(vector, section))
 			return i;
 	}
-	
+
 	return -1;
 }
 
 -(NSInteger)valueAt:(CGVector)vector minimum:(NSInteger)minimum maximum:(NSInteger)maximum {
 	static NSInteger const kNumQuadrants = 4;
 	const NSInteger kNumSectionsPerQuadrant = self.numValues / kNumQuadrants;
-	
+
 	NSInteger baseIndex = minimum;
-	
+
 	for(NSInteger i = 0; i < kNumQuadrants; ++i) {
 		const Quadrant quadrant = quadrants[i];
-		
+
 		const NSInteger index = [self indexOfVector:vector inQuadrant:quadrant sections:kNumSectionsPerQuadrant];
 		if(index >= 0)
 			return baseIndex + index;
-		
+
 		baseIndex += kNumSectionsPerQuadrant;
 	}
-	
+
 	return (minimum - 1);
 }
 
@@ -330,16 +330,16 @@ BOOL isVectorInSection(CGVector vector, Section section) {
 -(CGVector)vectorFor:(NSInteger)value {
 	NSAssert(value >= self.minimumValue, @"value must be at least minimumValue");
 	NSAssert(value <= self.maximumValue, @"value must be at most minimumValue");
-	
+
 	value -= self.minimumValue;
-	
+
 	static const NSInteger kNumQuadrants = 4;
 	const NSInteger kNumSectionsPerQuadrant = self.numValues / kNumQuadrants;
 	const CGFloat kSectionSize = (1. / kNumSectionsPerQuadrant);
-	
+
 	const NSInteger quadrant = (value / kNumSectionsPerQuadrant);
 	const NSInteger section = (value - (quadrant * kNumSectionsPerQuadrant));
-	
+
 	const Quadrant quad = quadrants[quadrant];
 	const CGVector center = [self.class incrementTowardsEnd:quad.start increment:CGVectorMake(section * kSectionSize, section * kSectionSize) end:quad.end];
 	return VectorNormalize(center);

@@ -8,7 +8,7 @@
 
 #import "TKScrollViewController.h"
 
-#import <Masonry/Masonry.h>
+@import Masonry;
 
 @interface TKScrollViewController () <UIScrollViewDelegate>
 

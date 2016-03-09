@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Tom Knapen. All rights reserved.
 //
 
-#import <MagicalRecord/MagicalRecord.h>
+@import MagicalRecord;
 
 /**
  * Function prototype for blocks, localObject = [self MR_inContext: localContext]

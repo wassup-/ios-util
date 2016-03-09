@@ -1,6 +1,6 @@
 //
 //  TKDelayedEvent.m
-//  ios-util
+//  iOS-util
 //
 //  Created by Tom Knapen on 28/01/16.
 //

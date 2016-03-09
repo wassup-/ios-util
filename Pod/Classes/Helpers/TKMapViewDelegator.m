@@ -1,6 +1,6 @@
 //
 //  TKMapViewDelegator.m
-//  TKProgress
+//  iOS-util
 //
 //  Created by Tom Knapen on 02/03/16.
 //  Copyright © 2016 Appwise. All rights reserved.
@@ -131,7 +131,7 @@ __strong typeof(var) var = var ## _weak__
 	NSParameterAssert(view);
 	id<MKAnnotation> annotation = view.annotation;
 	NSAssert([annotation isKindOfClass:TKAnnotationWrapper.class], @"Unexpected annotation type");
-	
+
 	NSIndexPath *indexPath = [self.class indexPathOf:annotation];
 	id data = [self.class dataOf:annotation];
 	id<MKAnnotation> anno = [self.class annotationOf:annotation];
@@ -208,7 +208,7 @@ __strong typeof(var) var = var ## _weak__
 	} else {
 		wrapper = annotation;
 	}
-	
+
 	[self selectAnnotation:wrapper animated:animated];
 }
 
@@ -219,7 +219,7 @@ __strong typeof(var) var = var ## _weak__
 	} else {
 		wrapper = annotation;
 	}
-	
+
 	[self deselectAnnotation:wrapper animated:animated];
 }
 

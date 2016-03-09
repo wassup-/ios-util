@@ -1,12 +1,12 @@
 //
 //  TKDelayedEvent.h
-//  ios-util
+//  iOS-util
 //
 //  Created by Tom Knapen on 28/01/16.
 //
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @class TKDelayedEvent;
 @class TKDelayedSignal;

@@ -1,12 +1,12 @@
 //
 //  TKMultiDelegate.h
-//  Pods
+//  iOS-util
 //
 //  Created by Tom Knapen on 03/03/16.
 //
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface TKMultiDelegate : NSObject
 

@@ -1,3 +1,11 @@
+//
+//  TKMapViewDelegate.h
+//  iOS-util
+//
+//  Created by Tom Knapen on 28/01/16.
+//
+//
+
 #ifndef TKMapViewDelegate_
 #define TKMapViewDelegate_
 

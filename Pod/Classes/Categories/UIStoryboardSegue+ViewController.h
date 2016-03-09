@@ -6,7 +6,7 @@
 //  Copyright © 2015 Appwise. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import UIKit;
 
 @interface UIStoryboardSegue (ViewController)
 

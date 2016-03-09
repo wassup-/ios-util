@@ -1,12 +1,12 @@
 //
 //  UIPlaceholderTextView.h
-//  SBB
+//  iOS-util
 //
 //  Created by Tom Knapen on 27/10/15.
 //  Copyright © 2015 Appwise. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface UIPlaceholderTextView : UITextView
 

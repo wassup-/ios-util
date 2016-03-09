@@ -1,6 +1,14 @@
+//
+//  TKProgressView.m
+//  iOS-util
+//
+//  Created by Tom Knapen on 01/03/16.
+//  Copyright © 2016 Tom Knapen. All rights reserved.
+//
+
 #import "TKProgressView.h"
 
-#import <Masonry/Masonry.h>
+@import Masonry;
 
 #import <objc/runtime.h>
 

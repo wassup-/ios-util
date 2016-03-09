@@ -6,7 +6,7 @@
 //  Copyright © 2016 Tom Knapen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 #pragma mark - Classes
 

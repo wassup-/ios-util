@@ -1,6 +1,6 @@
 //
 //  TKMultiDelegate.m
-//  Pods
+//  iOS-util
 //
 //  Created by Tom Knapen on 03/03/16.
 //
@@ -42,13 +42,13 @@
 	if([super respondsToSelector:aSelector]) {
 		return YES;
 	}
-	
+
 	for(id delegate in self.delegates) {
 		if(delegate && [delegate respondsToSelector:aSelector]) {
 			return YES;
 		}
 	}
-	
+
 	return NO;
 }
 
@@ -57,14 +57,14 @@
 	if(signature) {
 		return signature;
 	}
-	
+
 	[self.delegates compact];
-	
+
 	for(id delegate in self.delegates) {
 		if(!delegate) {
 			continue;
 		}
-		
+
 		signature = [delegate methodSignatureForSelector:aSelector];
 		if(signature) {
 			break;

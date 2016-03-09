@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Tom Knapen. All rights reserved.
 //
 
-#import <CoreGraphics/CoreGraphics.h>
-#import <UIKit/UIKit.h>
+@import CoreGraphics;
+@import UIKit;
 
 @interface UIImage (Util)
 

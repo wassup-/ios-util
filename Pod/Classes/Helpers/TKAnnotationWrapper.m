@@ -1,6 +1,6 @@
 //
 //  TKAnnotationWrapper.m
-//  TKProgress
+//  ios-util
 //
 //  Created by Tom Knapen on 02/03/16.
 //  Copyright © 2016 Appwise. All rights reserved.

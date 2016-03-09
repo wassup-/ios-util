@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Tom Knapen. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface NSNotificationCenter (Shared)
 

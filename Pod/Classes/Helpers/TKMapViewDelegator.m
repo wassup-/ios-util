@@ -11,22 +11,6 @@
 
 @import LBDelegateMatrioska;
 
-#ifndef weakify
-
-#define weakify(var) \
-autoreleasepool{} \
-__weak typeof(var) var ## _weak__ = var
-
-#endif
-
-#ifndef strongify
-
-#define strongify(var) \
-autoreleasepool{} \
-__strong typeof(var) var = var ## _weak__
-
-#endif
-
 @interface TKMapViewDelegator ()
 
 @property (nonatomic, strong) LBDelegateMatrioska *delegateProxy;

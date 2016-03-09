@@ -8,6 +8,8 @@
 
 #import "TKProgressView.h"
 
+#import "TKConstants.h"
+
 @import Masonry;
 
 #import <objc/runtime.h>
@@ -143,7 +145,9 @@ typedef void(^TKProgressOperationBlock)(id<TKProgressInterface> impl);
 }
 
 -(void)executeOperation {
+	@weakify(self);
 	dispatch_async(dispatch_get_main_queue(), ^{
+		@strongify(self);
 		TKProgressOperation *op = self.operation;
 		self.operation = nil;
 		[op main];

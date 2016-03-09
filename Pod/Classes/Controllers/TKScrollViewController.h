@@ -37,7 +37,7 @@
 
 @property (nonatomic, assign) CGFloat bottomOffset;
 
-@property (nonatomic, strong) id<TKScrollViewControllerProtocol> delegate;
+@property (nonatomic, weak) id<TKScrollViewControllerProtocol> delegate;
 
 -(void)scrollToTop:(BOOL)animated;
 

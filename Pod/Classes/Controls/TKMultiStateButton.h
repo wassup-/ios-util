@@ -45,7 +45,7 @@ typedef void(^TKMultiStateButtonAction)(TKMultiStateButton *button);
 @property (nonatomic, strong, readonly) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIImage *backgroundImage;
 @property (nonatomic, assign) TKMultiStateButtonState buttonState;
-@property (nonatomic, strong) id<TKMultiStateButtonInteractionProtocol> interactionDelegate;
+@property (nonatomic, weak) id<TKMultiStateButtonInteractionProtocol> interactionDelegate;
 
 @property (nonatomic, readonly) NSArray<TKInteractionRegion *> *interactionRegions;
 

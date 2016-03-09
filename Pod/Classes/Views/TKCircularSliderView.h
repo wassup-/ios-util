@@ -36,6 +36,6 @@
 @property (nonatomic, assign) IBInspectable CGFloat sliderRadius;
 @property (nonatomic, strong, readonly) UIView *sliderView;
 
-@property (nonatomic, strong) id<TKCircularSliderViewProtocol> delegate;
+@property (nonatomic, weak) id<TKCircularSliderViewProtocol> delegate;
 
 @end

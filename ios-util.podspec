@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
     # info
     s.name             = 'ios-util'
-    s.version          = '0.1.11'
+    s.version          = '0.1.12'
     s.summary          = 'Utility library for iOS development.'
 
     s.description      = 'This utility library contains classes (controllers, views, categories, ...) which may help/speedup iOS application development.'

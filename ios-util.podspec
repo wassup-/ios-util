@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
     # info
     s.name             = 'ios-util'
-    s.version          = '0.2.0'
+    s.version          = '0.2.1'
     s.summary          = 'Utility library for iOS development.'
 
     s.description      = 'This utility library contains classes (controllers, views, categories, ...) which may help/speedup iOS application development.'
@@ -38,6 +38,5 @@ Pod::Spec.new do |s|
 
     # s.public_header_files = 'Pod/Classes/**/*.h'
     s.frameworks = 'CoreGraphics', 'Foundation', 'UIKit'
-    s.dependency 'MagicalRecord'
-    s.dependency 'Masonry'
+    s.dependency 'MagicalRecord', 'Masonry'
 end

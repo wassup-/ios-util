@@ -27,96 +27,98 @@
 #pragma mark - UIPickerView
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-	if([self.tkDelegate respondsToSelector:@selector(pickerView:didSelectRowAtIndexPath:withData:)]) {
-		NSIndexPath *const indexPath = [NSIndexPath indexPathForRow:row inSection:component];
-		id data = [self dataForRowAtIndexPath:indexPath];
-		[self.tkDelegate pickerView:self didSelectRowAtIndexPath:indexPath withData:data];
-	}
+  if([self.tkDelegate respondsToSelector:@selector(pickerView:didSelectRowAtIndexPath:withData:)]) {
+    NSIndexPath *const indexPath = [NSIndexPath indexPathForRow:row inSection:component];
+    id data = [self dataForRowAtIndexPath:indexPath];
+    [self.tkDelegate pickerView:self didSelectRowAtIndexPath:indexPath withData:data];
+  }
 }
 
 #pragma mark - UIPickerViewDataSource
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-	return self.fetchedResultsController.sections.count;
+  return self.fetchedResultsController.sections.count;
 }
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-	return self.fetchedResultsController.sections[component].numberOfObjects;
+  return self.fetchedResultsController.sections[component].numberOfObjects;
 }
 
 #pragma mark - UIPickerViewDelegate
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-	NSIndexPath *const indexPath = [NSIndexPath indexPathForRow:row inSection:component];
-	id data = [self dataForRowAtIndexPath:indexPath];
-	return [self.tkDelegate pickerView:self titleForRowAtIndexPath:indexPath withData:data];
+  NSIndexPath *const indexPath = [NSIndexPath indexPathForRow:row inSection:component];
+  id data = [self dataForRowAtIndexPath:indexPath];
+  return [self.tkDelegate pickerView:self titleForRowAtIndexPath:indexPath withData:data];
 }
 
 #pragma mark - Helpers
 
 -(id)dataForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [self.fetchedResultsController objectAtIndexPath: indexPath];
+  return [self.fetchedResultsController objectAtIndexPath: indexPath];
 }
 
 -(void)reloadData {
-	NSError *error = nil;
-	if(![self.fetchedResultsController performFetch:&error]) {
-		NSLog(@"[%@ %@] %@", THIS_FILE, THIS_METHOD, error);
-	} else {
-		[self reloadAllComponents];
-	}
+  NSError *error = nil;
+  if(![self.fetchedResultsController performFetch:&error]) {
+    NSLog(@"[%@ %@] %@", THIS_FILE, THIS_METHOD, error);
+  } else {
+    [self reloadAllComponents];
+  }
 }
 
 -(void)performBatchUpdates {
-	NSSet<NSNumber *> *const sections = self.modifiedSections;
-	for(NSNumber *section in sections) {
-		[self reloadComponent:[section integerValue]];
-	}
+  NSSet<NSNumber *> *const sections = self.modifiedSections;
+  for(NSNumber *section in sections) {
+    [self reloadComponent:[section integerValue]];
+  }
 }
 
 #pragma mark - Properties
 
--(void)setApwDelegate:(id<TKPickerViewWithFRCProtocol>)apwDelegate {
-	_tkDelegate = apwDelegate;
-	[self reloadData];
-	self.dataSource = self;
-	self.delegate = self;
+-(void)setTkDelegate:(id<TKPickerViewWithFRCProtocol>)tkDelegate {
+  _tkDelegate = tkDelegate;
+  if(_tkDelegate) {
+    self.dataSource = self;
+    self.delegate = self;
+    [self reloadData];
+  }
 }
 
 -(NSFetchedResultsController *)fetchedResultsController {
-	if(!_fetchedResultsController) {
-		_fetchedResultsController = [self.tkDelegate newFetchedResultsController];
-		_fetchedResultsController.delegate = self;
-	}
-	return _fetchedResultsController;
+  if(!_fetchedResultsController) {
+    _fetchedResultsController = [self.tkDelegate newFetchedResultsController];
+    _fetchedResultsController.delegate = self;
+  }
+  return _fetchedResultsController;
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
 -(void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-	self.modifiedSections = NSMutableSet.set;
+  self.modifiedSections = NSMutableSet.set;
 }
 
 -(void)controller:(NSFetchedResultsController *)controller
   didChangeObject:(id)anObject
-	  atIndexPath:(NSIndexPath *)indexPath
-	forChangeType:(NSFetchedResultsChangeType)type
-	 newIndexPath:(NSIndexPath *)newIndexPath
+    atIndexPath:(NSIndexPath *)indexPath
+  forChangeType:(NSFetchedResultsChangeType)type
+   newIndexPath:(NSIndexPath *)newIndexPath
 {
-	[self.modifiedSections addObject:@(indexPath.section)];
-	[self.modifiedSections addObject:@(newIndexPath.section)];
+  [self.modifiedSections addObject:@(indexPath.section)];
+  [self.modifiedSections addObject:@(newIndexPath.section)];
 }
 
 -(void)controller:(NSFetchedResultsController *)controller
  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-		  atIndex:(NSUInteger)sectionIndex
-	forChangeType:(NSFetchedResultsChangeType)type
+      atIndex:(NSUInteger)sectionIndex
+  forChangeType:(NSFetchedResultsChangeType)type
 {
-	[self.modifiedSections addObject:@(sectionIndex)];
+  [self.modifiedSections addObject:@(sectionIndex)];
 }
 
 -(void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-	[self performBatchUpdates];
+  [self performBatchUpdates];
 }
 
 @end

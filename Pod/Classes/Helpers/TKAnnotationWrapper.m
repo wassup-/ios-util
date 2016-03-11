@@ -17,35 +17,40 @@
 @implementation TKAnnotationWrapper
 
 +(instancetype)wrap:(id<MKAnnotation>)annotation atIndexPath:(NSIndexPath *)indexPath withData:(id)data {
-	TKAnnotationWrapper *instance = [self new];
-	instance.annotation = annotation;
-	instance.indexPath = indexPath;
-	instance.data = data;
-	return instance;
+  TKAnnotationWrapper *instance = [self new];
+  instance.annotation = annotation;
+  instance.indexPath = indexPath;
+  instance.data = data;
+  return instance;
 }
 
 -(id<MKAnnotation>)unwrap {
-	return self.annotation;
+  return self.annotation;
 }
 
 #pragma mark - Passthrough
 
+-(BOOL)respondsToSelector:(SEL)aSelector {
+  return [super respondsToSelector:aSelector]
+         || [self.unwrap respondsToSelector:aSelector];
+}
+
 -(CLLocationCoordinate2D)coordinate {
-	return [self.unwrap coordinate];
+  return [self.unwrap coordinate];
 }
 
 -(NSString *)title {
-	if([self.annotation respondsToSelector:@selector(title)]) {
-		return [self.unwrap title];
-	}
-	return nil;
+  if([self.annotation respondsToSelector:@selector(title)]) {
+    return [self.unwrap title];
+  }
+  return nil;
 }
 
 -(NSString *)subtitle {
-	if([self.annotation respondsToSelector:@selector(subtitle)]) {
-		return [self.unwrap subtitle];
-	}
-	return nil;
+  if([self.annotation respondsToSelector:@selector(subtitle)]) {
+    return [self.unwrap subtitle];
+  }
+  return nil;
 }
 
 @end
@@ -54,12 +59,12 @@
 @implementation MKMapView (TKAnnotationWrapper)
 
 -(TKAnnotationWrapper *)annotationAtIndexPath:(NSIndexPath *)indexPath {
-	for(id<MKAnnotation> annotation in self.annotations) {
-		if(![annotation isKindOfClass:TKAnnotationWrapper.class]) continue;
-		TKAnnotationWrapper *wrapper = (TKAnnotationWrapper *)annotation;
-		if(wrapper.indexPath == indexPath) return wrapper;
-	}
-	return nil;
+  for(id<MKAnnotation> annotation in self.annotations) {
+    if(![annotation isKindOfClass:TKAnnotationWrapper.class]) continue;
+    TKAnnotationWrapper *wrapper = (TKAnnotationWrapper *)annotation;
+    if(wrapper.indexPath == indexPath) return wrapper;
+  }
+  return nil;
 }
 
 @end

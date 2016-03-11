@@ -38,5 +38,6 @@ Pod::Spec.new do |s|
 
     # s.public_header_files = 'Pod/Classes/**/*.h'
     s.frameworks = 'CoreGraphics', 'Foundation', 'UIKit'
-    s.dependency 'MagicalRecord', 'Masonry'
+    s.dependency 'MagicalRecord'
+    s.dependency 'Masonry'
 end

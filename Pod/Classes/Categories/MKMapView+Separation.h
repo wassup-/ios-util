@@ -8,11 +8,13 @@
 
 #import "TKMapViewDataSource.h"
 #import "TKMapViewDelegate.h"
+#import "TKMapViewDelegator.h"
 
 @import MapKit;
 
 @interface MKMapView (Separation)
 
+@property (nonatomic, strong, readonly) TKMapViewDelegator *tkDelegator;
 @property (nonatomic, weak) id<TKMapViewDelegate> tkDelegate;
 @property (nonatomic, weak) id<TKMapViewDataSource> tkDataSource;
 

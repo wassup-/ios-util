@@ -24,7 +24,13 @@
 +(instancetype)delegatorForMapView:(MKMapView *)mapView {
 	TKMapViewDelegator *instance = [self new];
 	instance.mapView = mapView;
+
+	id<MKMapViewDelegate> prevDelegate = mapView.delegate;
 	mapView.delegate = instance.delegateProxy;
+	if(prevDelegate) {
+		instance.passthroughDelegate = prevDelegate;
+	}
+
 	return instance;
 }
 
@@ -114,6 +120,9 @@
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
 	NSParameterAssert(view);
 	id<MKAnnotation> annotation = view.annotation;
+
+	if(![annotation isKindOfClass:TKAnnotationWrapper.class]) return;
+
 	NSAssert([annotation isKindOfClass:TKAnnotationWrapper.class], @"Unexpected annotation type");
 
 	NSIndexPath *indexPath = [self.class indexPathOf:annotation];
@@ -128,6 +137,9 @@
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view {
 	NSParameterAssert(view);
 	id<MKAnnotation> annotation = view.annotation;
+
+	if(![annotation isKindOfClass:TKAnnotationWrapper.class]) return;
+
 	NSAssert([annotation isKindOfClass:TKAnnotationWrapper.class], @"Unexpected annotation type");
 
 	NSIndexPath *indexPath = [self.class indexPathOf:annotation];

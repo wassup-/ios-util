@@ -87,6 +87,8 @@ typedef void(^TKProgressOperationBlock)(id<TKProgressInterface> impl);
 }
 
 -(void)main {
+	NSAssert(NSThread.isMainThread, @"UI updates must happen on main thread");
+
 	id<TKProgressInterface> impl = self.view.tkProgressImpl;
 	self.block(impl);
 }
@@ -109,7 +111,7 @@ typedef void(^TKProgressOperationBlock)(id<TKProgressInterface> impl);
 	if(self = [super init]) {
 		UIVisualEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
 		UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-		//		effectView.backgroundColor = UIColor.grayColor;
+
 		[self addSubview:effectView];
 		[effectView mas_updateConstraints:^(MASConstraintMaker *make) {
 			make.edges.equalTo(self);
@@ -321,6 +323,8 @@ typedef void(^TKProgressOperationBlock)(id<TKProgressInterface> impl);
 		_statusLabel = [UILabel new];
 		_statusLabel.textAlignment = NSTextAlignmentCenter;
 		_statusLabel.numberOfLines = 2;
+		[_statusLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+		[_statusLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
 		[self.contentView addSubview:_statusLabel];
 		[_statusLabel mas_updateConstraints:^(MASConstraintMaker *make) {
 			make.leading.equalTo(_statusLabel.superview.mas_leading).with.offset(16);
@@ -431,6 +435,8 @@ typedef void(^TKProgressOperationBlock)(id<TKProgressInterface> impl);
 		_messageLabel = [UILabel new];
 		_messageLabel.textAlignment = NSTextAlignmentCenter;
 		_messageLabel.numberOfLines = 2;
+		[_messageLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+		[_messageLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
 		[self.contentView addSubview:_messageLabel];
 		[_messageLabel mas_updateConstraints:^(MASConstraintMaker *make) {
 			make.leading.equalTo(_messageLabel.superview.mas_leading).with.offset(16);
@@ -539,6 +545,8 @@ typedef void(^TKProgressOperationBlock)(id<TKProgressInterface> impl);
 		_messageLabel = [UILabel new];
 		_messageLabel.textAlignment = NSTextAlignmentCenter;
 		_messageLabel.numberOfLines = 2;
+		[_messageLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+		[_messageLabel setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
 		[self.contentView addSubview:_messageLabel];
 		[_messageLabel mas_updateConstraints:^(MASConstraintMaker *make) {
 			make.leading.equalTo(_messageLabel.superview.mas_leading).with.offset(16);

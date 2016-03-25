@@ -24,3 +24,10 @@
 +(instancetype)delegatorForMapView:(MKMapView *)mapView;
 
 @end
+
+@interface MKMapView (TKMapViewDelegator)
+
+-(id<MKAnnotation>)annotationAtIndexPath:(NSIndexPath *)indexPath;
+-(id<MKAnnotation>)annotationWithData:(id)data;
+
+@end

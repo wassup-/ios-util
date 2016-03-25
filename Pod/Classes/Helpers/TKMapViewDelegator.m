@@ -7,9 +7,15 @@
 //
 
 #import "TKMapViewDelegator.h"
-#import "TKAnnotationWrapper.h"
+
+#import <objc/runtime.h>
 
 @import LBDelegateMatrioska;
+
+static char const kAssociationDelegatorKey;
+static char const kAssociatedIndexPathKey;
+static char const kAssociatedDatakey;
+static char const kAssociatedAnnotationKey;
 
 @interface TKMapViewDelegator ()
 
@@ -22,37 +28,48 @@
 #pragma mark - Creators
 
 +(instancetype)delegatorForMapView:(MKMapView *)mapView {
-	TKMapViewDelegator *instance = [self new];
-	instance.mapView = mapView;
+	TKMapViewDelegator *instance = objc_getAssociatedObject(mapView, &kAssociationDelegatorKey);
 
-	id<MKMapViewDelegate> prevDelegate = mapView.delegate;
-	mapView.delegate = instance.delegateProxy;
-	if(prevDelegate) {
-		instance.passthroughDelegate = prevDelegate;
+	if(!instance) {
+		instance = ({
+			TKMapViewDelegator *instance = [self new];
+			instance.mapView = mapView;
+			
+			id<MKMapViewDelegate> prevDelegate = mapView.delegate;
+			mapView.delegate = instance.delegateProxy;
+			if(prevDelegate) {
+				instance.passthroughDelegate = prevDelegate;
+			}
+			instance;
+		});
+		objc_setAssociatedObject(mapView, &kAssociationDelegatorKey, instance, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 	}
-
+	
 	return instance;
 }
 
 #pragma mark -
 
--(void)configureWithAnnotations:(NSArray<TKAnnotationWrapper *> *)annotations {
+-(void)configureWithAnnotations:(NSArray<id<MKAnnotation>> *)annotations {
 	[self.mapView removeAnnotations:self.mapView.annotations];
 	[self.mapView addAnnotations:annotations];
 }
 
 -(void)reloadData {
 	const NSInteger annotationCount = [self.dataSource numberOfAnnotationsForMapView:self.mapView];
-	NSMutableArray<TKAnnotationWrapper *> *annotations = [NSMutableArray arrayWithCapacity:annotationCount];
+	NSMutableArray<id<MKAnnotation>> *annotations = [NSMutableArray arrayWithCapacity:annotationCount];
 	for(NSInteger i = 0; i < annotationCount; ++i) {
 		NSIndexPath *indexPath = [NSIndexPath indexPathWithIndex:i];
 		id data = [self.dataSource mapView:self.mapView dataForAnnotationAtIndexPath:indexPath];
-		id<MKAnnotation> original = [self.dataSource mapView: self.mapView
-									   annotationAtIndexPath: indexPath
-													withData: data];
-		[annotations addObject:[TKAnnotationWrapper wrap: original
-											 atIndexPath: indexPath
-												withData: data]];
+		id<MKAnnotation> annotation = [self.dataSource mapView: self.mapView
+										 annotationAtIndexPath: indexPath
+													  withData: data];
+		
+		[self.class setIndexPathOf:annotation to:indexPath];
+		[self.class setDataOf:annotation to:data];
+		[self.class setAnnotationOf:annotation to:annotation];
+		
+		[annotations addObject:annotation];
 	}
 
 	[self configureWithAnnotations:annotations];
@@ -82,25 +99,14 @@
 #pragma mark - MKMapViewDelegate
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-	// Defaults for when [annotation isKindOfClass:MKUserLocation.class]
-	NSIndexPath *indexPath = nil;
-	id data = nil;
-	id<MKAnnotation> anno = annotation;
-	id identifier = nil;
-	MKAnnotationView *reuseView = nil;
-
-	if(![annotation isKindOfClass:MKUserLocation.class]) {
-		indexPath = [self.class indexPathOf:annotation];
-		data = [self.class dataOf:annotation];
-		anno = [self.class annotationOf:annotation];
-
-		identifier = [self.dataSource mapView: mapView
-			   classOrIdentifierForAnnotation: anno
-								  atIndexPath: indexPath
-									 withData: data];
-
-		reuseView = ([identifier isKindOfClass:NSString.class]) ? [mapView dequeueReusableAnnotationViewWithIdentifier:identifier] : nil;
-	}
+	NSIndexPath *indexPath = [self.class indexPathOf:annotation];
+	id data = [self.class dataOf:annotation];
+	id<MKAnnotation> anno = [self.class annotationOf:annotation];
+	id identifier = [self.dataSource mapView: mapView
+			  classOrIdentifierForAnnotation: anno
+								 atIndexPath: indexPath
+									withData: data];
+	MKAnnotationView *reuseView = ([identifier isKindOfClass:NSString.class]) ? [mapView dequeueReusableAnnotationViewWithIdentifier:identifier] : nil;
 
 	MKAnnotationView *view = [self.dataSource mapView: mapView
 									viewForAnnotation: anno
@@ -120,10 +126,8 @@
 -(void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
 	NSParameterAssert(view);
 	id<MKAnnotation> annotation = view.annotation;
-
-	if(![annotation isKindOfClass:TKAnnotationWrapper.class]) return;
-
-	NSAssert([annotation isKindOfClass:TKAnnotationWrapper.class], @"Unexpected annotation type");
+	
+	if([annotation isKindOfClass:MKUserLocation.class]) return;
 
 	NSIndexPath *indexPath = [self.class indexPathOf:annotation];
 	id data = [self.class dataOf:annotation];
@@ -138,9 +142,7 @@
 	NSParameterAssert(view);
 	id<MKAnnotation> annotation = view.annotation;
 
-	if(![annotation isKindOfClass:TKAnnotationWrapper.class]) return;
-
-	NSAssert([annotation isKindOfClass:TKAnnotationWrapper.class], @"Unexpected annotation type");
+	if([annotation isKindOfClass:MKUserLocation.class]) return;
 
 	NSIndexPath *indexPath = [self.class indexPathOf:annotation];
 	id data = [self.class dataOf:annotation];
@@ -181,16 +183,31 @@
 
 #pragma mark - Helpers
 
-+(NSIndexPath *)indexPathOf:(TKAnnotationWrapper *)annotation {
-	return annotation.indexPath;
++(void)setIndexPathOf:(id<MKAnnotation>)annotation to:(NSIndexPath *)indexPath {
+	objc_setAssociatedObject(annotation, &kAssociatedIndexPathKey, indexPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-+(id)dataOf:(TKAnnotationWrapper *)annotation {
-	return annotation.data;
++(void)setDataOf:(id<MKAnnotation>)annotation to:(id)data {
+	objc_setAssociatedObject(annotation, &kAssociatedDatakey, data, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-+(id<MKAnnotation>)annotationOf:(TKAnnotationWrapper *)annotation {
-	return annotation.unwrap;
++(void)setAnnotationOf:(id<MKAnnotation>)annotation to:(id<MKAnnotation>)anno {
+	objc_setAssociatedObject(annotation, &kAssociatedAnnotationKey, anno, OBJC_ASSOCIATION_ASSIGN);
+}
+
++(NSIndexPath *)indexPathOf:(id<MKAnnotation>)annotation {
+	if([annotation isKindOfClass:MKUserLocation.class]) return nil;
+	return objc_getAssociatedObject(annotation, &kAssociatedIndexPathKey);
+}
+
++(id)dataOf:(id<MKAnnotation>)annotation {
+	if([annotation isKindOfClass:MKUserLocation.class]) return nil;
+	return objc_getAssociatedObject(annotation, &kAssociatedDatakey);
+}
+
++(id<MKAnnotation>)annotationOf:(id<MKAnnotation>)annotation {
+	if([annotation isKindOfClass:MKUserLocation.class]) return annotation;
+	return objc_getAssociatedObject(annotation, &kAssociatedAnnotationKey);
 }
 
 @end
@@ -198,25 +215,29 @@
 @implementation MKMapView (TKDelegate)
 
 -(void)selectAnnotation:(id<MKAnnotation>)annotation atIndexPath:(NSIndexPath *)indexPath withData:(id)data animated:(BOOL)animated {
-	TKAnnotationWrapper *wrapper = nil;
-	if(![annotation isKindOfClass:TKAnnotationWrapper.class]) {
-		wrapper = [self annotationAtIndexPath:indexPath];
-	} else {
-		wrapper = annotation;
-	}
-
-	[self selectAnnotation:wrapper animated:animated];
+	[self selectAnnotation:annotation animated:animated];
 }
 
 -(void)deselectAnnotation:(id<MKAnnotation>)annotation atIndexPath:(NSIndexPath *)indexPath withData:(id)data animated:(BOOL)animated {
-	TKAnnotationWrapper *wrapper = nil;
-	if(![annotation isKindOfClass:TKAnnotationWrapper.class]) {
-		wrapper = [self annotationAtIndexPath:indexPath];
-	} else {
-		wrapper = annotation;
-	}
+	[self deselectAnnotation:annotation animated:animated];
+}
 
-	[self deselectAnnotation:wrapper animated:animated];
+@end
+
+@implementation MKMapView (TKMapViewDelegator)
+
+-(id<MKAnnotation>)annotationAtIndexPath:(NSIndexPath *)indexPath {
+	for(id<MKAnnotation> annotation in self.annotations) {
+		if([TKMapViewDelegator indexPathOf:annotation] == indexPath) return annotation;
+	}
+	return nil;
+}
+
+-(id<MKAnnotation>)annotationWithData:(id)data {
+	for(id<MKAnnotation> annotation in self.annotations) {
+		if([TKMapViewDelegator dataOf:annotation] == data) return annotation;
+	}
+	return nil;
 }
 
 @end

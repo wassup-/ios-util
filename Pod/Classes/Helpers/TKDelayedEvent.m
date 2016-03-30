@@ -68,9 +68,14 @@
 	for(NSNumber *flag in self.flags) {
 		if(![flag boolValue]) return;
 	}
-	for(TKDelayedEventHandler handler in self.handlers) {
-		handler(self);
-	}
+
+	__weak __typeof(self) self_weak_ = self;
+	dispatch_async(dispatch_get_main_queue(), ^{
+		__strong __typeof(self) self_strong_ = self_weak_;
+		for(TKDelayedEventHandler handler in self_strong_.handlers) {
+			handler(self_strong_);
+		}
+	});
 }
 
 #pragma mark - Properties

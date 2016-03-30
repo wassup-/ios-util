@@ -37,9 +37,22 @@
 	/**
 	 * source: https://stackoverflow.com/questions/2798653/is-it-possible-to-determine-whether-viewcontroller-is-presented-as-modal
 	 */
-	return (self.presentingViewController.presentedViewController == self)
-	|| ((self.navigationController != nil) && (self.navigationController.presentingViewController.presentedViewController == self.navigationController))
-	|| [self.tabBarController.presentingViewController isKindOfClass:UITabBarController.class];
+	if(self.presentingViewController.presentedViewController) {
+		return YES;
+	}
+	if(self.navigationController) {
+		if(self.navigationController.presentingViewController) {
+			if(self.navigationController.presentingViewController.presentedViewController == self.navigationController) {
+				if([self.navigationController.viewControllers containsObject:self]) {
+					return YES;
+				}
+			}
+		}
+	}
+	if([self.tabBarController.presentingViewController isKindOfClass:UITabBarController.class]) {
+		return YES;
+	}
+	return NO;
 }
 
 @end

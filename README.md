@@ -1,6 +1,6 @@
 # ios-util
 
-[![CI Status](http://img.shields.io/travis/Tom Knapen/ios-util.svg?style=flat)](https://travis-ci.org/Tom Knapen/ios-util)
+[![CI Status](http://img.shields.io/travis/wassup-/ios-util.svg?style=flat)](https://travis-ci.org/wassup-/ios-util)
 [![Version](https://img.shields.io/cocoapods/v/ios-util.svg?style=flat)](http://cocoapods.org/pods/ios-util)
 [![License](https://img.shields.io/cocoapods/l/ios-util.svg?style=flat)](http://cocoapods.org/pods/ios-util)
 [![Platform](https://img.shields.io/cocoapods/p/ios-util.svg?style=flat)](http://cocoapods.org/pods/ios-util)

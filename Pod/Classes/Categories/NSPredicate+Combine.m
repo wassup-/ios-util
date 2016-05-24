@@ -10,7 +10,7 @@
 
 @implementation NSPredicate (Combine)
 
-+(instancetype)combine:(NSPredicate *)left and:(NSPredicate *)right {
++(nullable instancetype)combine:(nullable NSPredicate *)left and:(nullable NSPredicate *)right {
 	if(left && right)
 		return [NSCompoundPredicate andPredicateWithSubpredicates:@[left, right]];
 	else if(left)
@@ -21,7 +21,7 @@
 		return nil;
 }
 
-+(instancetype)combine:(NSPredicate *)left or:(NSPredicate *)right {
++(nullable instancetype)combine:(nullable NSPredicate *)left or:(nullable NSPredicate *)right {
 	if(left && right)
 		return [NSCompoundPredicate orPredicateWithSubpredicates:@[left, right]];
 	else if(left)

@@ -10,7 +10,7 @@
 
 @interface NSPredicate (Combine)
 
-+(instancetype)combine:(NSPredicate *)left and:(NSPredicate *)right;
-+(instancetype)combine:(NSPredicate *)left or:(NSPredicate *)right;
++(nullable instancetype)combine:(nullable NSPredicate *)left and:(nullable NSPredicate *)right;
++(nullable instancetype)combine:(nullable NSPredicate *)left or:(nullable NSPredicate *)right;
 
 @end

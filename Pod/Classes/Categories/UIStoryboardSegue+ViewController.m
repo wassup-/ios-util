@@ -15,7 +15,7 @@
 		UINavigationController *nc = (UINavigationController *)vc;
 		for (UIViewController *candidate in nc.viewControllers) {
 			if ([candidate isKindOfClass:kind]) {
-				return candidate
+				return candidate;
 			}
 		}
 		return nc.visibleViewController;
@@ -38,7 +38,7 @@
 		}
 		return pc.presentedViewController;
 	}
-	
+
 	return nil;
 }
 

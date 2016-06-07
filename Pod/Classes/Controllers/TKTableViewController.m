@@ -20,9 +20,9 @@
 
 -(void)viewDidLoad {
 	[super viewDidLoad];
-
+	
 	self.tableView.emptyDataSetSource = self;
-
+	
 	self.tableView.dataSource = self;
 	self.tableView.delegate = self;
 }
@@ -38,7 +38,7 @@
 #pragma mark - UITableViewDataSource
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return [self.tkDataSource numberOfSectionsInTableView:tableView];
+	return [self.tkDataSource numberOfSectionsForTableView:tableView];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -47,16 +47,16 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	id data = [self.tkDataSource tableView:tableView dataForRowAtIndexPath:indexPath];
-
+	
 	id identifier = nil;
 	if([self.tkDataSource respondsToSelector:@selector(tableView:classOrIdentifierForRowAtIndexPath:withData:)]) {
 		identifier = [self.tkDataSource tableView: tableView
 					 classOrIdentifierForRowAtIndexPath: indexPath
-																  	 withData: data];
+										 withData: data];
 	} else {
 		identifier = @"Cell";
 	}
-
+	
 	UITableViewCell *cell = nil;
 	if([identifier isKindOfClass:NSString.class]) {
 		cell = [tableView dequeueReusableCellWithIdentifier: identifier
@@ -65,12 +65,12 @@
 		cell = [[UINib nibWithNibName: NSStringFromClass(identifier)
 							   bundle: [NSBundle bundleForClass:identifier]] instantiateWithOwner:self options:nil].firstObject;
 	}
-
+	
 	if(data && [self.tkDataSource respondsToSelector:@selector(tableView:configureCell:atIndexPath:withData:)]) {
 		[self.tkDataSource tableView: tableView
-									 configureCell: cell
-							 	     atIndexPath: indexPath
-										 	  withData: data];
+					   configureCell: cell
+						 atIndexPath: indexPath
+							withData: data];
 	}
 	return cell;
 }
@@ -80,18 +80,18 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if([self.tkDelegate respondsToSelector:@selector(tableView:didSelectRow:atIndexPath:withData:)]) {
 		[self.tkDelegate tableView: tableView
-								  didSelectRow: [tableView cellForRowAtIndexPath:indexPath]
-						  		 atIndexPath: indexPath
-							 	 		  withData: [self.tkDataSource tableView:tableView dataForRowAtIndexPath:indexPath]];
+					  didSelectRow: [tableView cellForRowAtIndexPath:indexPath]
+					   atIndexPath: indexPath
+						  withData: [self.tkDataSource tableView:tableView dataForRowAtIndexPath:indexPath]];
 	}
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if([self.tkDelegate respondsToSelector:@selector(tableView:didDeselectRow:atIndexPath:withData:)]) {
 		[self.tkDelegate tableView: tableView
-							  didDeselectRow: [tableView cellForRowAtIndexPath:indexPath]
-									 atIndexPath: indexPath
-							   		  withData: [self.tkDataSource tableView:tableView dataForRowAtIndexPath:indexPath]];
+					didDeselectRow: [tableView cellForRowAtIndexPath:indexPath]
+					   atIndexPath: indexPath
+						  withData: [self.tkDataSource tableView:tableView dataForRowAtIndexPath:indexPath]];
 	}
 }
 

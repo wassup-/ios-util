@@ -20,9 +20,9 @@
 
 -(void)viewDidLoad {
 	[super viewDidLoad];
-
+	
 	self.collectionView.emptyDataSetSource = self;
-
+	
 	self.collectionView.dataSource = self;
 	self.collectionView.delegate = self;
 }
@@ -38,7 +38,7 @@
 #pragma mark - UICollectionViewDataSource
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-	return [self.tkDataSource numberOfSectionsInCollectionView:collectionView];
+	return [self.tkDataSource numberOfSectionsForCollectionView:collectionView];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -47,16 +47,16 @@
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 	id data = [self.tkDataSource collectionView:collectionView dataForCellAtIndexPath:indexPath];
-
+	
 	id identifier = nil;
 	if([self.tkDataSource respondsToSelector:@selector(collectionView:classOrIdentifierForCellAtIndexPath:withData:)]) {
 		identifier = [self.tkDataSource collectionView: collectionView
-		 					 classOrIdentifierForCellAtIndexPath: indexPath
-																   			  withData: data];
+				   classOrIdentifierForCellAtIndexPath: indexPath
+											  withData: data];
 	} else {
 		identifier = @"Cell";
 	}
-
+	
 	UICollectionViewCell *cell = nil;
 	if([identifier isKindOfClass:NSString.class]) {
 		cell = [collectionView dequeueReusableCellWithReuseIdentifier: identifier
@@ -65,13 +65,13 @@
 		cell = [[UINib nibWithNibName: NSStringFromClass(identifier)
 							   bundle: [NSBundle bundleForClass:identifier]] instantiateWithOwner:self options:nil].firstObject;
 	}
-
-	if(data && [self.tkDataSource respondsToSelector:@selector(collectionView:configureCell:atIndexPath:withData:)]) {
-		[self.tkDataSource collectionView: collectionView
-												configureCell: cell
-							 						atIndexPath: indexPath
-														 withData: data];
-	}
+	
+	
+	[self.tkDataSource collectionView: collectionView
+						configureCell: cell
+						  atIndexPath: indexPath
+							 withData: data];
+	
 	return cell;
 }
 
@@ -80,18 +80,18 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 	if([self.tkDelegate respondsToSelector:@selector(collectionView:didSelectCell:atIndexPath:withData:)]) {
 		[self.tkDelegate collectionView: collectionView
-											didSelectCell: [collectionView cellForItemAtIndexPath:indexPath]
-						   				  atIndexPath: indexPath
-							  					 withData: [self.tkDataSource collectionView:collectionView dataForCellAtIndexPath:indexPath]];
+						  didSelectCell: [collectionView cellForItemAtIndexPath:indexPath]
+							atIndexPath: indexPath
+							   withData: [self.tkDataSource collectionView:collectionView dataForCellAtIndexPath:indexPath]];
 	}
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
 	if([self.tkDelegate respondsToSelector:@selector(collectionView:didDeselectCell:atIndexPath:withData:)]) {
 		[self.tkDelegate collectionView: collectionView
-										didDeselectCell: [collectionView cellForItemAtIndexPath:indexPath]
-							 				  atIndexPath: indexPath
-													 withData: [self.tkDataSource collectionView:collectionView dataForCellAtIndexPath:indexPath]];
+						didDeselectCell: [collectionView cellForItemAtIndexPath:indexPath]
+							atIndexPath: indexPath
+							   withData: [self.tkDataSource collectionView:collectionView dataForCellAtIndexPath:indexPath]];
 	}
 }
 
@@ -101,8 +101,8 @@
 	CGSize size = CGSizeMake(100, 100);
 	if([self.tkDataSource respondsToSelector:@selector(collectionView:sizeForCellAtIndexPath:withData:)]) {
 		size = [self.tkDataSource collectionView: collectionView
-		 									sizeForCellAtIndexPath: indexPath
-																	  withData: [self.tkDataSource collectionView:collectionView dataForCellAtIndexPath:indexPath]];
+						  sizeForCellAtIndexPath: indexPath
+										withData: [self.tkDataSource collectionView:collectionView dataForCellAtIndexPath:indexPath]];
 	}
 	return size;
 }

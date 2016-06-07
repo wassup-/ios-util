@@ -13,7 +13,7 @@
 @protocol TKCollectionViewControllerDataSource <NSObject>
 
 @required
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView;
+-(NSInteger)numberOfSectionsForCollectionView:(UICollectionView *)collectionView;
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section;
 
 -(id)collectionView:(UICollectionView *)collectionView dataForCellAtIndexPath:(NSIndexPath *)indexPath;

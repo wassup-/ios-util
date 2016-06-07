@@ -13,7 +13,7 @@
 @protocol TKTableViewControllerDataSource <NSObject>
 
 @required
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
+-(NSInteger)numberOfSectionsForTableView:(UITableView *)tableView;
 -(NSInteger)tableView:(UITableView*)tableView numberOfItemsInSection:(NSInteger)section;
 
 -(id)tableView:(UITableView*)tableView dataForRowAtIndexPath:(NSIndexPath *)indexPath;

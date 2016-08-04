@@ -10,20 +10,20 @@
 
 @interface UIView (Recurse)
 
--(BOOL)isSuperOfClass:(Class)kind;
--(UIView *)firstDescendantOfClass:(Class)kind;
--(UIView *)lastDescendantOfClass:(Class)kind;
+-(BOOL)isSuperOfClass:(__nonnull Class)kind;
+-( UIView * _Nullable )firstDescendantOfClass:(__nonnull Class)kind;
+-(UIView * __nullable)lastDescendantOfClass:(__nonnull Class)kind;
 
--(BOOL)isDescendantOfClass:(Class)kind;
--(UIView *)firstSuperOfClass:(Class)kind;
--(UIView *)lastSuperOfClass:(Class)kind;
+-(BOOL)isDescendantOfClass:(__nonnull Class)kind;
+-(UIView * __nullable)firstSuperOfClass:(__nonnull Class)kind;
+-(UIView * __nullable)lastSuperOfClass:(__nonnull Class)kind;
 
--(BOOL)isSuperOfClassWithName:(NSString *)name;
--(UIView *)firstDescendantOfClassWithName:(NSString *)name;
--(UIView *)lastDescendantOfClassWithName:(NSString *)name;
+-(BOOL)isSuperOfClassWithName:(NSString * __nonnull)name;
+-(UIView * __nullable)firstDescendantOfClassWithName:(NSString * __nonnull)name;
+-(UIView * __nullable)lastDescendantOfClassWithName:(NSString * __nonnull)name;
 
--(BOOL)isDescendantOfClassWithName:(NSString *)name;
--(UIView *)firstSuperOfClassWithName:(NSString *)name;
--(UIView *)lastSuperOfClassWithName:(NSString *)name;
+-(BOOL)isDescendantOfClassWithName:(NSString * __nonnull)name;
+-(UIView * __nullable)firstSuperOfClassWithName:(NSString * __nonnull)name;
+-(UIView * __nullable)lastSuperOfClassWithName:(NSString * __nonnull)name;
 
 @end

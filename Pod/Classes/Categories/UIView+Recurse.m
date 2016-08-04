@@ -10,11 +10,11 @@
 
 @implementation UIView (Recurse)
 
--(BOOL)isSuperOfClass:(Class)kind {
+-(BOOL)isSuperOfClass:(__nonnull Class)kind {
 	return [self firstDescendantOfClass:kind] != nil;
 }
 
--(UIView *)firstDescendantOfClass:(Class)kind {
+-(UIView * __nullable)firstDescendantOfClass:(__nonnull Class)kind {
 	for(UIView *subview in self.subviews) {
 		if([subview isKindOfClass:kind]) {
 			return subview;
@@ -25,7 +25,7 @@
 	return nil;
 }
 
--(UIView *)lastDescendantOfClass:(Class)kind {
+-(UIView * __nullable)lastDescendantOfClass:(__nonnull Class)kind {
 	UIView *last = nil;
 	for(UIView *subview in self.subviews) {
 		if([subview isKindOfClass:kind]) {
@@ -37,7 +37,7 @@
 	return last;
 }
 
--(BOOL)isDescendantOfClass:(Class)kind {
+-(BOOL)isDescendantOfClass:(__nonnull Class)kind {
 	UIView *view = self;
 	while(view) {
 		if([view isKindOfClass:kind])
@@ -47,7 +47,7 @@
 	return NO;
 }
 
--(UIView *)firstSuperOfClass:(Class)kind {
+-(UIView * __nullable)firstSuperOfClass:(__nonnull Class)kind {
 	UIView *view = self;
 	while(view) {
 		if([view isKindOfClass:kind])
@@ -57,7 +57,7 @@
 	return nil;
 }
 
--(UIView *)lastSuperOfClass:(Class)kind {
+-(UIView * __nullable)lastSuperOfClass:(__nonnull Class)kind {
 	UIView *last = nil;
 	UIView *view = self;
 	while(view) {
@@ -69,28 +69,28 @@
 }
 
 
--(BOOL)isSuperOfClassWithName:(NSString *)name {
+-(BOOL)isSuperOfClassWithName:(NSString * __nonnull)name {
 	return [self isSuperOfClass:NSClassFromString(name)];
 }
 
--(UIView *)firstDescendantOfClassWithName:(NSString *)name {
+-(UIView * __nullable)firstDescendantOfClassWithName:(NSString * __nonnull)name {
 	return [self firstDescendantOfClass:NSClassFromString(name)];
 }
 
--(UIView *)lastDescendantOfClassWithName:(NSString *)name {
+-(UIView * __nullable)lastDescendantOfClassWithName:(NSString * __nonnull)name {
 	return [self lastDescendantOfClass:NSClassFromString(name)];
 }
 
 
--(BOOL)isDescendantOfClassWithName:(NSString *)name {
+-(BOOL)isDescendantOfClassWithName:(NSString * __nonnull)name {
 	return [self isDescendantOfClass:NSClassFromString(name)];
 }
 
--(UIView *)firstSuperOfClassWithName:(NSString *)name {
+-(UIView * __nullable)firstSuperOfClassWithName:(NSString * __nonnull)name {
 	return [self firstSuperOfClass:NSClassFromString(name)];
 }
 
--(UIView *)lastSuperOfClassWithName:(NSString *)name {
+-(UIView * __nullable)lastSuperOfClassWithName:(NSString * __nonnull)name {
 	return [self lastSuperOfClass:NSClassFromString(name)];
 }
 

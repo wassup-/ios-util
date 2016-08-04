@@ -22,7 +22,7 @@
 
 #pragma mark - Helpers
 
--(void)presentViewController:(UIViewController *)controller asPopoverWithSize:(CGSize)size animated:(BOOL)animated {
+-(void)presentViewController:(UIViewController * __nonnull)controller asPopoverWithSize:(CGSize)size animated:(BOOL)animated {
 	controller.modalPresentationStyle = UIModalPresentationPopover;
 	controller.preferredContentSize = size;
 	controller.popoverPresentationController.delegate = self;

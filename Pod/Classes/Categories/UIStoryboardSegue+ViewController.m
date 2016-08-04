@@ -10,7 +10,7 @@
 
 @implementation UIStoryboardSegue (ViewController)
 
-+ (UIViewController *)nextViewControllerIn:(UIViewController *)vc ofKind:(Class)kind {
++ (UIViewController * __nullable)nextViewControllerIn:(UIViewController * __nullable)vc ofKind:(__nonnull Class)kind {
 	if ([vc isKindOfClass:UINavigationController.class]) {
 		UINavigationController *nc = (UINavigationController *)vc;
 		for (UIViewController *candidate in nc.viewControllers) {
@@ -42,7 +42,7 @@
 	return nil;
 }
 
-- (UIViewController *)tk_destinationViewController {
+- (UIViewController * __nullable)tk_destinationViewController {
 	UIViewController *destination = self.destinationViewController;
 	if ([destination isKindOfClass:UINavigationController.class]) {
 		UINavigationController *navCon = (UINavigationController *)destination;
@@ -51,7 +51,7 @@
 	return destination;
 }
 
-- (UIViewController *)destinationViewControllerOfKind:(Class)kind {
+- (UIViewController * __nullable)destinationViewControllerOfKind:(__nonnull Class)kind {
 	UIViewController *destination = self.destinationViewController;
 	while (![destination isKindOfClass:kind]) {
 		destination = [self.class nextViewControllerIn:destination ofKind:kind];

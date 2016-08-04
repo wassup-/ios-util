@@ -10,7 +10,7 @@
 
 @interface UIViewController (Modal) <UIPopoverPresentationControllerDelegate>
 
--(void)presentViewController:(UIViewController *)controller asPopoverWithSize:(CGSize)size animated:(BOOL)animated;
+-(void)presentViewController:(UIViewController * __nonnull)controller asPopoverWithSize:(CGSize)size animated:(BOOL)animated;
 
 -(BOOL)isBeingPresentedModally;
 

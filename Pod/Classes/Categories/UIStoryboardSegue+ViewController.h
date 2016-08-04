@@ -10,7 +10,7 @@
 
 @interface UIStoryboardSegue (ViewController)
 
-- (UIViewController *)tk_destinationViewController;
-- (UIViewController *)destinationViewControllerOfKind:(Class)kind;
+- (UIViewController * __nullable)tk_destinationViewController;
+- (UIViewController * __nullable)destinationViewControllerOfKind:(__nonnull Class)kind;
 
 @end

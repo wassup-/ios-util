@@ -10,7 +10,7 @@
 
 }
 
--(void)execute:(Task)task continuation:(Task)continuation {
+-(void)execute:(Task)task continuation:(Task)continuation success:(SuccessTask)success error:(ErrorTask)error {
 
 }
 
